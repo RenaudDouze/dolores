@@ -1,0 +1,865 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"criterio",
+				"criterions"
+			],
+			[
+				"cri",
+				"criterions"
+			],
+			[
+				"Thing",
+				"ThingCollection"
+			],
+			[
+				"mo",
+				"model"
+			],
+			[
+				"th",
+				"thingsView"
+			],
+			[
+				"thi",
+				"things"
+			],
+			[
+				"S",
+				"StackCollection"
+			],
+			[
+				"sc",
+				"script	Tag"
+			],
+			[
+				"com",
+				"comparatorApp"
+			],
+			[
+				"co",
+				"comparatorApp"
+			],
+			[
+				"re",
+				"request"
+			],
+			[
+				"post",
+				"postDatas"
+			],
+			[
+				"repo",
+				"response"
+			],
+			[
+				"Re",
+				"Response"
+			],
+			[
+				"js",
+				"jsonDatas"
+			],
+			[
+				"a",
+				"aDatas"
+			],
+			[
+				"st",
+				"storedDatas"
+			],
+			[
+				"thin",
+				"things"
+			],
+			[
+				"html",
+				"htmlToJson"
+			],
+			[
+				"tex",
+				"textTitle"
+			],
+			[
+				"new",
+				"newTd"
+			],
+			[
+				"bo",
+				"bodyLastRow"
+			],
+			[
+				"in",
+				"insertBefore"
+			],
+			[
+				"body",
+				"bodyRows"
+			],
+			[
+				"foot",
+				"footTr"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"back",
+				"background-color"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "web/js/view/ThingView.js",
+			"settings":
+			{
+				"buffer_size": 547,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "web/js/view/TableView.js",
+			"settings":
+			{
+				"buffer_size": 5685,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "web/js/model/ValueModel.js",
+			"settings":
+			{
+				"buffer_size": 350,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "web/js/collection/ValueCollection.js",
+			"settings":
+			{
+				"buffer_size": 225,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/App/views/TableTemplate.html.underscore",
+			"settings":
+			{
+				"buffer_size": 1511,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 311.0,
+		"last_filter": "insta",
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 120.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2deb499853c4371624f5a07e27c334aa' + 'bf8c4e67d14fb0525ba4f89698a6d7e1'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/E/my_server/www/dolores",
+		"/E/my_server/www/dolores/app",
+		"/E/my_server/www/dolores/app/log",
+		"/E/my_server/www/dolores/src",
+		"/E/my_server/www/dolores/src/App",
+		"/E/my_server/www/dolores/src/App/views",
+		"/E/my_server/www/dolores/web",
+		"/E/my_server/www/dolores/web/js",
+		"/E/my_server/www/dolores/web/js/collection",
+		"/E/my_server/www/dolores/web/js/model",
+		"/E/my_server/www/dolores/web/js/view"
+	],
+	"file_history":
+	[
+		"/E/my_server/www/dolores/src/App/views/CriterionTemplate.html.underscore",
+		"/E/my_server/www/dolores/web/js/model/CriterionModel.js",
+		"/E/my_server/www/dolores/web/js/model/ThingModel.js",
+		"/E/my_server/www/dolores/web/js/view/TableView.js",
+		"/E/my_server/www/dolores/web/js/collection/CriterionCollection.js",
+		"/E/my_server/www/dolores/web/js/collection/ThingCollection.js",
+		"/E/my_server/www/dolores/src/App/views/index.twig",
+		"/E/my_server/www/dolores/web/js/model/SaveModel.js",
+		"/E/my_server/www/dolores/src/App/views/SaveTemplate.html.underscore",
+		"/E/my_server/www/dolores/web/js/view/AppView.js",
+		"/E/my_server/www/dolores/web/js/view/CriterionView.js",
+		"/E/my_server/www/dolores/web/js/view/SaveView.js",
+		"/E/my_server/www/dolores/web/js/view/ThingView.js",
+		"/E/my_server/www/dolores/web/js/model/ValueModel.js",
+		"/E/my_server/www/dolores/web/js/lib/backbone-min.js",
+		"/E/my_server/www/dolores/src/App/views/TableTemplate.html.underscore",
+		"/E/my_server/www/dolores/src/App/views/layout.twig",
+		"/E/my_server/www/dolores/web/js/lib/backbone-relational.js",
+		"/E/my_server/www/dolores/web/js/model/TableModel.js",
+		"/E/my_server/www/dolores/web/js/view/ValueView.js",
+		"/E/my_server/www/dolores/src/App/views/ThingTemplate.html.underscore",
+		"/E/my_server/www/dolores/src/App/views/ValueTemplate.html.underscore",
+		"/E/my_server/www/dolores/web/js/lib/underscore-min.js",
+		"/E/my_server/www/dolores/web/js/collection/ValueCollection.js",
+		"/E/my_server/www/dolores/app/app.php",
+		"/E/my_server/www/dolores/web/js/lib/jquery-min.js",
+		"/E/my_server/www/comparateur/web/js/controllers.js",
+		"/E/my_server/www/comparateur/web/js/comparateur.js",
+		"/E/minecraft/mcedit0.1.8/Witchfarm-Test_analysis_edit.txt",
+		"/E/minecraft/mcedit0.1.8/Witchfarm-Test_analysis.txt",
+		"/E/my_server/www/dolores/web/js/collection/StackCollection.js",
+		"/C/Users/Renaud/AppData/Roaming/.minecraft/saves/biiim_survival/stats/0c272c67-eee8-40f7-a05e-8d6c47ad06a9.json",
+		"/E/my_server/www/dolores/web/js/lib/bootstrap.js",
+		"/E/my_server/www/dolores/web/js/view/_table.html",
+		"/E/my_server/www/dolores/web/js/collection/stack.js",
+		"/C/Users/Renaud/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/E/my_server/www/dolores/web/.htaccess",
+		"/E/my_server/www/dolores/web/index.php",
+		"/C/Users/Renaud/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/E/my_server/logs/php_error.log",
+		"/E/my_server/www/dolores/vendor/composer/installed.json",
+		"/E/my_server/www/dolores/vendor/phpunit/phpunit/Tests/_files/ExceptionInSetUpTest.php",
+		"/E/my_server/www/dolores/vendor/phpunit/php-token-stream/Tests/_files/classInScopedNamespace.php",
+		"/E/my_server/www/dolores/vendor/phpunit/phpunit/PHPUnit/Framework/Constraint/IsNull.php",
+		"/E/my_server/bin/apache/apache2.4.9/conf/httpd.conf",
+		"/E/my_server/vhosts/comparateur.conf",
+		"/E/my_server/vhosts/dolores.conf",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/E/my_server/www/dolores/composer.json",
+		"/E/minecraft/SeedFinder/biomecheck/BiomeCheckCandidate.class",
+		"/E/minecraft/SeedFinder/biomecheck/BiomeCheckSeedScanner.class",
+		"/E/minecraft/SeedFinder/biomecheck/BiomeCheckPanel.class",
+		"/E/my_server/www/comparateur/web/index_wai.php",
+		"/E/my_server/www/comparateur/web/js/app.js",
+		"/C/Users/Renaud/AppData/Roaming/.minecraft/saves/mcew/stats/43305776-9127-4ec9-a9ab-67127830c5f2.json",
+		"/E/my_server/www/comparateur/templates/index.html.twig",
+		"/E/my_server/www/comparateur/web/tpl/save_delete_confirm.html.angular",
+		"/E/my_server/www/comparateur/web/tpl/table.html.angular",
+		"/E/my_server/www/comparateur/web/css/comparateur.css",
+		"/E/my_server/www/comparateur/web/tpl/save_list.html.angular",
+		"/E/my_server/www/comparateur/composer.json",
+		"/E/my_server/www/comparateur/templates/head.html.twig",
+		"/E/my_server/www/comparateur/src/controllers.php",
+		"/E/my_server/www/comparateur/src/app.php",
+		"/E/my_server/www/comparateur/composer",
+		"/E/my_server/www/comparateur/vendor/symfony/web-profiler-bundle/Symfony/Bundle/WebProfilerBundle/Resources/views/Profiler/toolbar.css.twig",
+		"/E/my_server/www/comparateur/vendor/symfony/twig-bridge/Symfony/Bridge/Twig/TokenParser/TransChoiceTokenParser.php",
+		"/E/my_server/www/comparateur/vendor/symfony/form/Symfony/Component/Form/Extension/Core/DataTransformer/ChoicesToBooleanArrayTransformer.php",
+		"/E/my_server/www/comparateur/vendor/symfony/form/Symfony/Component/Form/Extension/Core/DataTransformer/ChoiceToBooleanArrayTransformer.php",
+		"/E/my_server/www/comparateur/vendor/symfony/config/Symfony/Component/Config/Tests/Definition/BooleanNodeTest.php",
+		"/E/my_server/www/comparateur/vendor/doctrine/dbal/tests/Doctrine/Tests/DBAL/Types/BooleanTest.php",
+		"/E/my_server/www/comparateur/vendor/symfony/form/Symfony/Component/Form/Tests/Extension/Core/DataTransformer/BooleanToStringTransformerTest.php",
+		"/E/my_server/www/comparateur/vendor/symfony/form/Symfony/Component/Form/Extension/Core/DataTransformer/BooleanToStringTransformer.php",
+		"/E/my_server/www/comparateur/vendor/twig/twig/test/bootstrap.php",
+		"/E/my_server/www/comparateur/vendor/silex/silex/tests/bootstrap.php",
+		"/E/my_server/www/comparateur/vendor/pimple/pimple/tests/bootstrap.php",
+		"/E/my_server/www/comparateur/vendor/monolog/monolog/tests/bootstrap.php",
+		"/E/my_server/www/comparateur/vendor/symfony/console/Symfony/Component/Console/Output/BufferedOutput.php",
+		"/E/my_server/www/comparateur/templates/base.html.twig",
+		"/E/my_server/www/comparateur/.gitignore",
+		"/E/my_server/www/comparateur/config/prod.php",
+		"/E/my_server/www/comparateur/templates/header.html.twig",
+		"/E/my_server/www/comparateur/web/tpl/base.html.twig",
+		"/E/my_server/www/comparateur/src/Controller/ComparatuurController.php",
+		"/E/my_server/www/comparateur/web/tpl/index.html.twig",
+		"/E/my_server/www/comparateur/web/tpl/head.html.twig",
+		"/E/my_server/www/comparateur/web/tpl/layout.html.twig",
+		"/E/my_server/www/exercicesdestyle/templates/index.html",
+		"/E/my_server/www/comparateur/web/tpl/header.html.twig",
+		"/E/my_server/www/comparateur/web/index.php",
+		"/E/my_server/www/comparateur/web/tpl/footer.html.twig",
+		"/E/my_server/bin/composer/composer.phar",
+		"/E/my_server/www/exercicesdestyle/templates/head.html",
+		"/E/my_server/www/exercicesdestyle/src/controllers.php",
+		"/E/my_server/www/exercicesdestyle/web/css/sites/so90s.css",
+		"/E/my_server/www/exercicesdestyle/templates/menu.html",
+		"/E/my_server/www/exercicesdestyle/src/app.php",
+		"/E/my_server/www/exercicesdestyle/templates/sites/sans_css.html",
+		"/E/my_server/www/exercicesdestyle/templates/footer.html",
+		"/E/my_server/www/exercicesdestyle/templates/credits.html",
+		"/E/my_server/www/exercicesdestyle/web/css/exercicesdestyle.css",
+		"/E/my_server/www/exercicesdestyle/templates/layout.html",
+		"/E/my_server/www/exercicesdestyle/templates/sites/so90s.html",
+		"/E/my_server/www/exercicesdestyle/templates/errors/404.html",
+		"/E/my_server/www/exercicesdestyle/config/prod.php",
+		"/E/my_server/www/exercicesdestyle/config/dev.php",
+		"/E/my_server/www/exercicesdestyle/templates/header.html",
+		"/E/my_server/apache/conf/httpd.conf",
+		"/E/my_server/www/exercicesdestyle/var/cache/twig/c8/1c/af44a30def85c4b4dceaa85f6904733c2384267609e8e8a2ed36da92a366.php",
+		"/E/my_server/www/exercicesdestyle/web/.htaccess",
+		"/E/my_server/www/exercicesdestyle/web/404.html",
+		"/E/my_server/www/exercicesdestyle/templates/sites/+18.html",
+		"/E/my_server/www/exercicesdestyle/templates/pourquoi.html",
+		"/E/my_server/www/exercicesdestyle/templates/errors/default.html",
+		"/E/my_server/www/exercicesdestyle/templates/errors/5xx.html",
+		"/E/my_server/www/exercicesdestyle/templates/errors/500.html",
+		"/E/my_server/www/exercicesdestyle/templates/errors/4xx.html",
+		"/E/my_server/www/exercicesdestyle/templates/bientot.html",
+		"/E/my_server/www/exercicesdestyle/templates/base.html",
+		"/C/Users/Renaud/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/E/my_server/www/exercicesdestyle/web/css/main.css",
+		"/E/my_server/www/exercicesdestyle/templates/base_sans_css.html",
+		"/E/my_server/www/exercicesdestyle/web/index.php",
+		"/E/my_server/www/exercicesdestyle/templates/base_sans_css_js.html",
+		"/E/my_server/www/exercicesdestyle - Copie/web/.htaccess",
+		"/E/my_server/www/exercicesdestyle - Copie/.htaccess",
+		"/E/my_server/php/php.ini",
+		"/E/my_server/www/exercicesdestyle/web/index.html"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"E:\\my_server\\www\\dolores\\web\\js\\view",
+			"E:\\my_server\\www\\dolores\\web\\js\\model",
+			"E:\\my_server\\www\\dolores\\web\\js\\lib",
+			"E:\\my_server\\www\\dolores\\web\\js\\collection",
+			"E:\\my_server\\www\\dolores\\web\\js\\view",
+			"E:\\my_server\\www\\dolores\\web\\js\\model",
+			"E:\\my_server\\www\\dolores\\web\\js\\collection",
+			"E:\\my_server\\www\\dolores\\web\\js",
+			"E:\\my_server\\www\\exercicesdestyle",
+			"E:\\my_server\\www\\exercicesdestyle\\src"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"console",
+			"remove",
+			"change",
+			"this.render",
+			"criterions.at(iC)",
+			"things.at(iT)",
+			"[",
+			"newValue",
+			"nbTotalThings",
+			"nbAddedThings",
+			"name",
+			"values",
+			"n;",
+			"on",
+			"criterions",
+			"things",
+			"nbTotalThings",
+			"this.things",
+			"\",\n",
+			"this.modal",
+			"table",
+			"app",
+			"Thing",
+			"includeInJSON",
+			"Backbone.Model.prototype.idAttribute",
+			"id",
+			"'Backbone.Model.prototype.idAttribute'",
+			"this.model.",
+			"toJSON",
+			"json",
+			"things",
+			"model",
+			"this.",
+			"this",
+			"this.things",
+			"Thing",
+			"thingsView",
+			"thing",
+			"criterions",
+			"thingsView",
+			"ng-",
+			" =",
+			"nb",
+			"	i",
+			"i",
+			",\n",
+			"Thing",
+			"thing",
+			"things",
+			"thing",
+			"Thing",
+			"point",
+			"criterions",
+			"Thing",
+			"thing",
+			"text",
+			"this.things.length",
+			"text",
+			"ng-",
+			"attributes",
+			"models[",
+			"critetion",
+			"thing",
+			"round",
+			"critetions",
+			"things",
+			"values",
+			"Thing",
+			"Chose ",
+			"Machin ",
+			"Machin",
+			"Truc ",
+			"'A",
+			"a",
+			"A",
+			"models",
+			"value.",
+			"values",
+			"datas",
+			"1",
+			"td",
+			"CritereModel",
+			"Truc",
+			"Machin",
+			"Truc",
+			"thing",
+			"?in=dj-gnon/sets/ma-tete-mon-coeur-et-mes-pieds",
+			"href",
+			"?in=dj-gnon/sets/ma-tete-mon-coeur-et-mes-pieds",
+			"dj-gnon/sets/ma-tete-mon-coeur-et-mes-pieds",
+			"=dj-gnon/sets/ma-tete-mon-coeur-et-mes-pieds",
+			"/>\n",
+			"console",
+			"comparateur",
+			"}\n",
+			"	}",
+			"{\n",
+			"closeAcion",
+			"on",
+			"addInSaveList",
+			"saveLocally",
+			"Virer",
+			"primary",
+			"btn",
+			"primary",
+			"</button>",
+			"button type=\"button\"",
+			"processDatas",
+			"saveLocally",
+			"localStorage",
+			"savePrefix",
+			"app",
+			");\n",
+			"data",
+			"/';\n",
+			"localy",
+			"saves",
+			"time",
+			"{{ app.request.host }}",
+			"$scope.",
+			"]);\n",
+			"'",
+			");\n",
+			" class=\"active\"",
+			">\n",
+			"contenteditable=\"false\"",
+			"&nbsp;",
+			"\"true\">&nbsp;"
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": true,
+		"regex": false,
+		"replace_history":
+		[
+			"this.",
+			"</span>",
+			"span",
+			"locally",
+			"",
+			"\"",
+			"",
+			"contenteditable=\"false\" class=\"active\"",
+			"",
+			"\"true\">",
+			"\">",
+			"",
+			"\\1",
+			"voir, et",
+			"",
+			". Car",
+			"courses",
+			"course",
+			"%}",
+			"{%"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "web/js/view/ThingView.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 547,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								359,
+								359
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "web/js/view/TableView.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5685,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3550,
+								3550
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1008.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "web/js/model/ValueModel.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 350,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								123,
+								123
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "web/js/collection/ValueCollection.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 225,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								133,
+								133
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 1,
+					"file": "web/js/view/TableView.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5685,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4319,
+								4319
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1414.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/App/views/TableTemplate.html.underscore",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1511,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								955,
+								955
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML Underscore Syntax/HTML (Underscore).tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.424870809195,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "dolores.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"valuecon",
+				"web\\js\\collection\\ValueCollection.js"
+			],
+			[
+				"vaulmo",
+				"web\\js\\model\\ValueModel.js"
+			],
+			[
+				"tabev",
+				"web\\js\\view\\TableView.js"
+			],
+			[
+				"crimod",
+				"web\\js\\model\\CriterionModel.js"
+			],
+			[
+				"thicol",
+				"web\\js\\collection\\ThingCollection.js"
+			],
+			[
+				"thingmod",
+				"web\\js\\model\\ThingModel.js"
+			],
+			[
+				"savemod",
+				"web\\js\\model\\SaveModel.js"
+			],
+			[
+				"inde",
+				"src\\App\\views\\index.twig"
+			],
+			[
+				"layou",
+				"src\\App\\views\\layout.twig"
+			],
+			[
+				"index",
+				"src\\App\\views\\index.twig"
+			],
+			[
+				"crite",
+				"web\\js\\model\\CriterionModel.js"
+			],
+			[
+				"compo",
+				"composer.json"
+			],
+			[
+				"co",
+				"composer.json"
+			],
+			[
+				"404",
+				"web\\404.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 1,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 312.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

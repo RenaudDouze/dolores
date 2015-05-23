@@ -32,6 +32,9 @@ $app['app.default_controller'] = $app->share(
         return new \App\Controller\DefaultController($app['twig'], $app['logger']);
     }
 );
+$app['web_path'] = $app->share(function () {
+    return realpath(__DIR__ . '/../web/');
+});
 
 // Map routes to controllers
 include __DIR__ . '/routing.php';

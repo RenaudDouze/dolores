@@ -1,0 +1,5 @@
+<script type="text/template" id="value_template">
+<span  contenteditable="true">
+	<%= data %>
+</span>
+</script>

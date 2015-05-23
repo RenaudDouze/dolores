@@ -2,6 +2,67 @@
 {% block title %}DefaultController::index{% endblock %}
 
 {% block content %}
-<h1>Silex Bootstrap</h1>
-<p>You have successfully bootstrapped Silex. Now get to work!</p>
+
+<div id="app" class="container">
+	<header>
+		<h1>Dolores</h1>
+	</header>
+
+	<section id="main">
+		<div class="table-responsive" id="tableContent">
+			<table>
+				<tr>
+					<td>DOUZE</td>
+				</tr>
+			</table>
+		</div>
+		<div id="save"></div> 
+	</section>
+
+	<footer>Ceci est un comparateur, pour comparer quoique tu veux</footer>
+</div>
+
+{% endblock %}
+
+
+{% block closing_scripts %}
+    <script src="{{ app.request.basePath }}/js/model/CellModel.js"></script>
+	<!-- Models -->
+    <script src="{{ app.request.basePath }}/js/model/CriterionModel.js"></script>
+    <script src="{{ app.request.basePath }}/js/model/ThingModel.js"></script>
+    <script src="{{ app.request.basePath }}/js/model/ValueModel.js"></script>
+    <script src="{{ app.request.basePath }}/js/model/SaveModel.js"></script>
+    <script src="{{ app.request.basePath }}/js/model/TableModel.js"></script>
+	<!-- Collections -->
+    <script src="{{ app.request.basePath }}/js/collection/ValueCollection.js"></script>
+    <script src="{{ app.request.basePath }}/js/collection/ThingCollection.js"></script>
+    <script src="{{ app.request.basePath }}/js/collection/CriterionCollection.js"></script>
+	<!-- Templates -->
+    {% include('TableTemplate.html.underscore') %}
+    {% include('ThingTemplate.html.underscore') %}
+    {% include('CriterionTemplate.html.underscore') %}
+    {% include('ValueTemplate.html.underscore') %}
+    {% include('SaveTemplate.html.underscore') %}
+	<!-- Views -->
+    <script src="{{ app.request.basePath }}/js/view/CellView.js"></script>
+    <script src="{{ app.request.basePath }}/js/view/ThingView.js"></script>
+    <script src="{{ app.request.basePath }}/js/view/CriterionView.js"></script>
+    <script src="{{ app.request.basePath }}/js/view/ValueView.js"></script>
+    <script src="{{ app.request.basePath }}/js/view/SaveView.js"></script>
+    <script src="{{ app.request.basePath }}/js/view/TableView.js"></script>
+    <script src="{{ app.request.basePath }}/js/view/AppView.js"></script>
+    <script type="text/javascript">
+    	var app, table, things, criterions, values = null;
+	    function main () {
+	    	things = new ThingCollection();
+	    	criterions = new CriterionCollection();
+	    	values = new ValueCollection();
+
+	    	app = new AppView();
+	    }
+
+	    $(document).ready(function() {
+	    	main();
+		});
+    </script>
 {% endblock %}

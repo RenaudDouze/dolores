@@ -1,12 +1,12 @@
 {
-    "name": "aptoma/silex-bootstrap",
-    "description": "Basic bootstrap for Silex based projects. Use as template for getting started quickly.",
+    "name": "rdouze/dolores",
+    "description": "Dolores is a comparator for compare everything (more or less) you want !",
     "license": "MIT",
     "keywords": ["Silex", "Bootstrap"],
     "authors": [
         {
-            "name": "Gunnar Lium",
-            "email": "gunnar@aptoma.com"
+            "name": "Renaud Lerognon",
+            "email": "renaud.lerognon@gmail.com"
         }
     ],
     "autoload": {
