@@ -23,8 +23,11 @@
 				</span>
 			</th>
 			<td colspan="<%= things.length %>">
-				<button type="button" class="btn btn-default btn-xs action-save action-save-table">
-				 	<span class="glyphicon glyphicon-floppy-save"></span> Sauvegarder
+				<button type="button" class="btn btn-default btn-xs action-export action-export-table">
+				 	<span class="glyphicon glyphicon-export"></span> Sauvegarder
+				</button>
+				<button type="button" class="btn btn-default btn-xs action-import action-import-table">
+				 	<span class="glyphicon glyphicon-import"></span> Charger
 				</button>
 			</td>
 		</tr>

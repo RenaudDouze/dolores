@@ -16,7 +16,8 @@
 				</tr>
 			</table>
 		</div>
-		<div id="save"></div> 
+		<div id="export"></div> 
+		<div id="import"></div> 
 	</section>
 
 	<footer>Ceci est un comparateur, pour comparer quoique tu veux</footer>
@@ -26,33 +27,54 @@
 
 
 {% block closing_scripts %}
-    <script src="{{ app.request.basePath }}/js/model/CellModel.js"></script>
 	<!-- Models -->
-    <script src="{{ app.request.basePath }}/js/model/CriterionModel.js"></script>
-    <script src="{{ app.request.basePath }}/js/model/ThingModel.js"></script>
-    <script src="{{ app.request.basePath }}/js/model/ValueModel.js"></script>
-    <script src="{{ app.request.basePath }}/js/model/SaveModel.js"></script>
-    <script src="{{ app.request.basePath }}/js/model/TableModel.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/model/AlertModel.js"></script>
+    
+    <script src="{{ app.request.basePath }}/js/src/model/CellModel.js"></script>
+    
+    <script src="{{ app.request.basePath }}/js/src/model/ThingModel.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/model/CriterionModel.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/model/ValueModel.js"></script>
+
+    <script src="{{ app.request.basePath }}/js/src/model/SaveModel.js"></script>
+    
+    <script src="{{ app.request.basePath }}/js/src/model/TableModel.js"></script>
+	
 	<!-- Collections -->
-    <script src="{{ app.request.basePath }}/js/collection/ValueCollection.js"></script>
-    <script src="{{ app.request.basePath }}/js/collection/ThingCollection.js"></script>
-    <script src="{{ app.request.basePath }}/js/collection/CriterionCollection.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/collection/ThingCollection.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/collection/CriterionCollection.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/collection/ValueCollection.js"></script>
+	
 	<!-- Templates -->
-    {% include('TableTemplate.html.underscore') %}
-    {% include('ThingTemplate.html.underscore') %}
-    {% include('CriterionTemplate.html.underscore') %}
-    {% include('ValueTemplate.html.underscore') %}
-    {% include('SaveTemplate.html.underscore') %}
+    {% include('template/AlertTemplate.html.underscore') %}
+
+    {% include('template/ThingTemplate.html.underscore') %}
+    {% include('template/CriterionTemplate.html.underscore') %}
+    {% include('template/ValueTemplate.html.underscore') %}
+    
+    {% include('template/ExportTemplate.html.underscore') %}
+    {% include('template/ImportTemplate.html.underscore') %}
+    
+    {% include('template/TableTemplate.html.underscore') %}
+
 	<!-- Views -->
-    <script src="{{ app.request.basePath }}/js/view/CellView.js"></script>
-    <script src="{{ app.request.basePath }}/js/view/ThingView.js"></script>
-    <script src="{{ app.request.basePath }}/js/view/CriterionView.js"></script>
-    <script src="{{ app.request.basePath }}/js/view/ValueView.js"></script>
-    <script src="{{ app.request.basePath }}/js/view/SaveView.js"></script>
-    <script src="{{ app.request.basePath }}/js/view/TableView.js"></script>
-    <script src="{{ app.request.basePath }}/js/view/AppView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/AlertView.js"></script>
+
+    <script src="{{ app.request.basePath }}/js/src/view/CellView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/ThingView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/CriterionView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/ValueView.js"></script>
+    
+    <script src="{{ app.request.basePath }}/js/src/view/ModalView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/ExportView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/ImportView.js"></script>
+    
+    <script src="{{ app.request.basePath }}/js/src/view/TableView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/AppView.js"></script>
+
+    <!-- Execution -->
     <script type="text/javascript">
-    	var app, table, things, criterions, values = null;
+    	var app, table, tableView, save, things, criterions, values = null;
 	    function main () {
 	    	things = new ThingCollection();
 	    	criterions = new CriterionCollection();

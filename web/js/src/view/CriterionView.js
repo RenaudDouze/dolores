@@ -15,6 +15,6 @@ var CriterionView = CellView.extend({
 		Remove a criterion
 	**/
 	removeCriterion: function(e) {
-		table.removeCriterion(this.model);
+		tableView.removeCriterion(this.model);
 	},
 });

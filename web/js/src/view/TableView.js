@@ -5,11 +5,14 @@ var TableView = Backbone.View.extend({
 	el: '#tableContent',
 
 	/**
-		Array of views for values, things and criterions
+		Subviews
 	**/
 	valuesView: null,
 	thingsView: null,
 	criterionsView: null,
+	exportView: null,
+	importView: null,
+	valueView: null,
 
 	/**
 		Initialize
@@ -69,6 +72,16 @@ var TableView = Backbone.View.extend({
         	this.valuesView.push(view);
         }
 
+		save = new SaveModel();
+		this.importView = new ImportView({
+			model: save,
+			el: '#import',
+		});
+		this.exportView = new ExportView({
+			model: save,
+			el: '#export',
+		});
+
 	    this.listenTo(values, 'change', this.render);
 	    this.listenTo(values, 'sort', this.render);
 	    this.listenTo(things, 'sort', this.render);
@@ -109,7 +122,10 @@ var TableView = Backbone.View.extend({
     events: {
         "click .action-add-thing": "addThing",
         "click .action-add-criterion": "addCriterion",
-        "click .action-save-table": "saveTable",
+
+        "click .action-export-table": "openExportPage",
+        "click .action-import-table": "openImportPage",
+
         "click th": "focusToEditableContent",
         "click td": "focusToEditableContent",
     },
@@ -207,11 +223,20 @@ var TableView = Backbone.View.extend({
 	},
 
 	/**
-		Save the table datas
+		Open the export page
 	**/
-	saveTable: function() {
-		var data = JSON.stringify(values);
+	openExportPage: function() {
+		save.set('data', JSON.stringify(values));
 
-		app.save.set('data', data);
+		this.exportView.open();
+	},
+
+	/**
+		Open the import page
+	**/
+	openImportPage: function() {
+		save.set('data', JSON.stringify(values));
+		
+		this.importView.open();
 	},
 });
