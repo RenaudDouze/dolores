@@ -21,16 +21,20 @@ var ImportView = ModalView.extend({
 		var text = this.$el.find('textarea').val();
 		try {
 			var json = JSON.parse(text);
-		} catch (e) {
-			this.alert.set('warning', "Oh, ton JSON, c'est pas du JSON !");
-		}
-
-		try {
 			values.load(json);
-		}catch (e) {
-			console.log(e);
-			this.alert.set('warning', "Oh, ton JSON n'est pas compatible avec Dolores");
+		} catch (e) {
+			if (e instanceof SyntaxError) {
+				this.alert.set('warning', "Oh, ton JSON, c'est pas du JSON !");
+			} else if (e instanceof DoloresJsonNotCompatibleException) {
+				var list = new ListView();
+                this.alert.set(
+					'warning', 
+					"Oh, ton JSON n'est pas compatible avec Dolores" + 
+                    list.render(e.errors).el.innerHTML
+				);
+			} else {
+				console.exception(e);
+			}
 		}
-
 	},
 });

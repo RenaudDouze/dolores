@@ -27,6 +27,9 @@
 
 
 {% block closing_scripts %}
+    <!-- Exceptions -->
+    <script src="{{ app.request.basePath }}/js/src/exception/DoloresJsonNotCompatibleException.js"></script>
+
 	<!-- Models -->
     <script src="{{ app.request.basePath }}/js/src/model/AlertModel.js"></script>
     
@@ -47,6 +50,7 @@
 	
 	<!-- Templates -->
     {% include('template/AlertTemplate.html.underscore') %}
+    {% include('template/ListTemplate.html.underscore') %}
 
     {% include('template/ThingTemplate.html.underscore') %}
     {% include('template/CriterionTemplate.html.underscore') %}
@@ -59,6 +63,7 @@
 
 	<!-- Views -->
     <script src="{{ app.request.basePath }}/js/src/view/AlertView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/ListView.js"></script>
 
     <script src="{{ app.request.basePath }}/js/src/view/CellView.js"></script>
     <script src="{{ app.request.basePath }}/js/src/view/ThingView.js"></script>

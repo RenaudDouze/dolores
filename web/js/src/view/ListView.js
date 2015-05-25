@@ -1,4 +1,4 @@
-var AlertView = Backbone.View.extend({
+var ListView = Backbone.View.extend({
 
 	tagName: 'div',
 
@@ -6,7 +6,7 @@ var AlertView = Backbone.View.extend({
 		Template
 	**/
     template: function() {
-    	return _.template($('#alert_template').html());
+    	return _.template($('#list_template').html());
     },
 
 	/**
@@ -19,11 +19,10 @@ var AlertView = Backbone.View.extend({
 	/**
 		Render
 	**/
-	render: function() {
+	render: function(datas) {
 		var tpl = this.template();
-		this.$el.html(tpl(this.model.toJSON()));
-
-		this.model.clean();
+		console.log({datas: datas});
+		this.$el.html(tpl({datas: datas}));
 
       	return this;
 	},

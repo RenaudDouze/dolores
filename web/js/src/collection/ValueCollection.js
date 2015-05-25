@@ -13,6 +13,7 @@ var ValueCollection = Backbone.Collection.extend({
 	**/
 	load: function(datas) {
 		var newValues = new Array();
+		var errors = new Array();
 
 		things.reset(null, {silent: true});
 		criterions.reset(null, {silent: true});
@@ -43,7 +44,7 @@ var ValueCollection = Backbone.Collection.extend({
 				var valueData = element;
 				valueData.thing = thing; 
 				valueData.criterion = criterion; 
-				
+
 				var value = new ValueModel(valueData);
 				newValues.push(value);
 			}
@@ -52,5 +53,9 @@ var ValueCollection = Backbone.Collection.extend({
 		values.reset(newValues);
 
 		values.sort();
+
+		if (! _.isEmpty(errors)) {
+			throw new DoloresJsonNotCompatibleException(errors);
+		}
 	},
 });
