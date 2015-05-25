@@ -1,18 +1,26 @@
 var AlertModel = Backbone.Model.extend({
 
+	// string Success text
+	success: '',
+
+	// string Info text
+	info: '',
+
 	// string Warning text
 	warning: '',
 
-	// string Success text
-	success: '',
+	// string Danger text
+	danger: '',
 
     /**
     	Default values
     **/
 	defaults: function() {
       	return {
-        	warning: '',
         	success: '',
+        	info: '',
+        	warning: '',
+        	danger: '',
       	};
     },
 

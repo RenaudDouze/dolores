@@ -45,6 +45,33 @@ var TableView = Backbone.View.extend({
 	    criterions = new CriterionCollection([Critere1, Critere2, Critere3]);
 	    values = new ValueCollection([ValueTruc1, ValueMachin1, ValueChose1, ValueTruc2, ValueMachin2, ValueChose2, ValueTruc3, ValueMachin3, ValueChose3]); 
 
+		save = new SaveModel();
+		this.importView = new ImportView({
+			model: save,
+			el: '#import',
+		});
+		this.exportView = new ExportView({
+			model: save,
+			el: '#export',
+		});
+
+	    this.listenTo(values, 'sort', this.render);
+	    this.listenTo(things, 'sort', this.render);
+	    this.listenTo(criterions, 'sort', this.render);
+
+	    this.listenTo(things, 'reset', this.initializeViews);
+	    this.listenTo(criterions, 'reset', this.initializeViews);
+	    this.listenTo(values, 'reset', this.initializeViews);
+
+	    this.initializeViews();
+
+	    this.render();
+	},
+
+	/**
+		Initialize subviews (things, criterions and values)
+	**/
+	initializeViews: function() {
 	    this.thingsView = new Array();
         for (var i = 0; i < things.length; i++) {
         	var thing = things.at(i);
@@ -71,23 +98,6 @@ var TableView = Backbone.View.extend({
         	});
         	this.valuesView.push(view);
         }
-
-		save = new SaveModel();
-		this.importView = new ImportView({
-			model: save,
-			el: '#import',
-		});
-		this.exportView = new ExportView({
-			model: save,
-			el: '#export',
-		});
-
-	    this.listenTo(values, 'change', this.render);
-	    this.listenTo(values, 'sort', this.render);
-	    this.listenTo(things, 'sort', this.render);
-	    this.listenTo(criterions, 'sort', this.render);
-
-	    this.render();
 	},
 
 	/**

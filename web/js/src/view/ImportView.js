@@ -21,12 +21,15 @@ var ImportView = ModalView.extend({
 		var text = this.$el.find('textarea').val();
 		try {
 			var json = JSON.parse(text);
-
-			console.log(this.alert);
-			this.alert.set('success', "Ton JSON, c'est du bon mon con");
 		} catch (e) {
+			this.alert.set('warning', "Oh, ton JSON, c'est pas du JSON !");
+		}
+
+		try {
+			values.load(json);
+		}catch (e) {
 			console.log(e);
-			this.alert.set('warning', "Ton JSON, c'est pas du JSON");
+			this.alert.set('warning', "Oh, ton JSON n'est pas compatible avec Dolores");
 		}
 
 	},
