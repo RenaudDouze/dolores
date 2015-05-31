@@ -1,0 +1,5 @@
+<script type="text/template" id="title_template">
+<span contenteditable="true">
+	<%= title %>
+</span>
+</script>

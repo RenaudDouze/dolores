@@ -21,7 +21,8 @@ var CellView = Backbone.View.extend({
 		Initialize
 	**/
 	initialize: function() {
-		// this.listenTo(this.model, 'change', this.render);
+        this.listenTo(this.model, 'remove', this.remove);
+        this.listenTo(this.model, 'destroy', this.remove);
 	},
 
 	/**

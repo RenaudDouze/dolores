@@ -15,7 +15,7 @@ var ThingModel = CellModel.extend({
     },
 
 	/**
-		Method to set the main data. Need to be extented
+		Method to set the main data
 	**/
 	setData: function(data) {
 		this.set('label', data);

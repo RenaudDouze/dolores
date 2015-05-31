@@ -1,6 +1,6 @@
 <script type="text/template" id="thing_template">
 <span class="thing" contenteditable="true"><%= label %></span>
-<span class="btn btn-danger btn-xs pull-right action-remove-thing" title="Enlever la chose">
+<span class="btn btn-danger btn-xs pull-right action-remove action-remove-thing" title="Enlever la chose">
  	<span class="glyphicon glyphicon-remove-circle"></span> Virer
 </span>
 </script>

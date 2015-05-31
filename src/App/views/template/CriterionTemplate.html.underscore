@@ -1,6 +1,6 @@
 <script type="text/template" id="criterion_template">
 <span class="criterion" contenteditable="true"><%= label %></span>
-<span class="btn btn-danger btn-xs pull-right action-remove-criterion" title="Enlever le critère">
+<span class="btn btn-danger btn-xs pull-right action-remove action-remove-criterion" title="Enlever le critère">
  	<span class="glyphicon glyphicon-remove-circle"></span> Virer
 </span>
 </script>

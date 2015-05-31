@@ -1,5 +1,10 @@
 var CriterionView = CellView.extend({
 	/**
+		Tab name
+	**/
+	tagName: 'th',
+
+	/**
 		Template selector
 	**/
 	templateSelector: '#criterion_template',
@@ -7,8 +12,12 @@ var CriterionView = CellView.extend({
 	/**
 		Events
 	**/
-    events: {
-        "click .action-remove-criterion.btn": "removeCriterion",
+    events: function () {
+    	var events = CellView.prototype.events;
+
+    	return _.extend(events, {
+        	"click .action-remove-criterion.btn": "removeCriterion",
+  	  	});
     },
 
 	/**

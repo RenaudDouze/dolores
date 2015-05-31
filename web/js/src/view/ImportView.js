@@ -18,23 +18,44 @@ var ImportView = ModalView.extend({
 		Import the data
 	**/
 	import: function() {
+        this.loaderStart();
+
 		var text = this.$el.find('textarea').val();
 		try {
 			var json = JSON.parse(text);
-			values.load(json);
-		} catch (e) {
-			if (e instanceof SyntaxError) {
-				this.alert.set('warning', "Oh, ton JSON, c'est pas du JSON !");
-			} else if (e instanceof DoloresJsonNotCompatibleException) {
-				var list = new ListView();
+            
+            tableTitle.set(json.title);
+			values.load(json.values);
+
+            this.loaderStop();
+            this.alert.set('success', "Et voilà !");
+        } catch (e) {
+            if (e instanceof SyntaxError) {
+                this.alert.set('warning', "Oh, ton JSON, c'est pas du JSON !");
+            } else if (e instanceof DoloresJsonNotCompatibleException) {
+                var list = new ListView();
                 this.alert.set(
-					'warning', 
-					"Oh, ton JSON n'est pas compatible avec Dolores" + 
+                    'warning', 
+                    "Oh, ton JSON n'est pas compatible avec Dolores" + 
                     list.render(e.errors).el.innerHTML
-				);
-			} else {
-				console.exception(e);
-			}
-		}
+                );
+            } else {
+                console.exception(e);
+            }
+        }
 	},
+
+    /**
+        Start the loader
+    **/
+    loaderStart: function () {
+        this.$el.find('.action-import.btn').addClass('m-progress');
+    },
+
+    /**
+        Stop the loader
+    **/
+    loaderStop: function () {
+        this.$el.find('.action-import.btn').removeClass('m-progress');
+    }
 });

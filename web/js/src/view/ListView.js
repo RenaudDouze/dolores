@@ -21,7 +21,6 @@ var ListView = Backbone.View.extend({
 	**/
 	render: function(datas) {
 		var tpl = this.template();
-		console.log({datas: datas});
 		this.$el.html(tpl({datas: datas}));
 
       	return this;

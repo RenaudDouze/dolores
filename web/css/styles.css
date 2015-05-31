@@ -2,3 +2,12 @@ body {
     font-size: 18px;
     font-family: sans-serif;
 }
+
+th .action-remove,
+td .action-remove {
+    opacity: 0.1;
+}
+th:hover .action-remove,
+td:hover .action-remove {
+    opacity: 1;
+}

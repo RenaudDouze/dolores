@@ -1,4 +1,14 @@
 var ThingView = CellView.extend({
+    /**
+        Tab name
+    **/
+    tagName: 'th',
+
+    /**
+        Class name
+    **/
+    className: 'thing',
+	
 	/**
 		Template selector
 	**/
@@ -7,8 +17,12 @@ var ThingView = CellView.extend({
 	/**
 		Events
 	**/
-    events: {
-        "click .action-remove-thing.btn": "removeThing",
+    events: function () {
+    	var events = CellView.prototype.events;
+
+    	return _.extend(events, {
+        	"click .action-remove-thing.btn": "removeThing",
+  	  	});
     },
 
 	/**

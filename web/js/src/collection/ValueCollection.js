@@ -51,7 +51,6 @@ var ValueCollection = Backbone.Collection.extend({
 		});
 
 		values.reset(newValues);
-
 		values.sort();
 
 		if (! _.isEmpty(errors)) {

@@ -1,54 +1,73 @@
 <script type="text/template" id="table_template">
-<table class="table table-hover table-striped table-bordered" id="table">
-	<thead>
-		<tr>
-			<th>
-				<span contenteditable="true">Dolores</th>
-			</th>
-			<% _.each(things.models, function(thing) { %> 
-			    <th id="thing-<%= thing.cid %>" class="thing"></th>
-			<% }); %>
-			<th>
-				<span class="btn btn-info btn-xs pull-right action-add action-add-thing">
-				 	<span class="glyphicon glyphicon-plus"></span> Ajouter
-				</span>
-			</th>
-		</tr>
-	</thead>
-	<tfoot>				
-		<tr>
-			<th>
-				<span class="btn btn-info btn-xs pull-right action-add action-add-criterion">
-				 	<span class="glyphicon glyphicon-plus"></span> Ajouter
-				</span>
-			</th>
-			<td colspan="<%= things.length %>">
-				<button type="button" class="btn btn-default btn-xs action-export action-export-table">
-				 	<span class="glyphicon glyphicon-export"></span> Sauvegarder
-				</button>
-				<button type="button" class="btn btn-default btn-xs action-import action-import-table">
-				 	<span class="glyphicon glyphicon-import"></span> Charger
-				</button>
-			</td>
-		</tr>
-	</tfoot>
-	<tbody>
-		<% var i = 0; %>
-			<% _.each(values.models, function(value) { %> 
-				<% if (0 === (i % things.length)) { %>
-					<% if (i) { %>
-			<td></td>
-		</tr>
+<div class="table-responsive">
+	<table class="table table-hover table-striped table-bordered" id="table">
+		<thead>
+			<tr>
+				<th>
+					<span class="loader">
+						<img src="/img/ajax-loader.gif" alt="Ça charge" title="Ça charge" />
+					</span>
+					<span id="table-title">
+					</span>
+					<%= _.now() %>
+				</th>
+
+				<th rowspan="<%= criterions.length %>">
+					<span class="btn btn-info btn-xs pull-right action-add action-add-thing">
+					 	<span class="glyphicon glyphicon-plus"></span> Ajouter
+					</span>
+				</th>
+			</tr>
+		</thead>
+		<tfoot>				
+			<tr>
+				<th>
+					<span class="btn btn-info btn-xs pull-right action-add action-add-criterion">
+					 	<span class="glyphicon glyphicon-plus"></span> Ajouter
+					</span>
+				</th>
+				<td colspan="<%= things.length %>">
+					<button type="button" class="btn btn-default btn-xs action-export action-export-table">
+					 	<span class="glyphicon glyphicon-export"></span> Sauvegarder
+					</button>
+					<button type="button" class="btn btn-default btn-xs action-import action-import-table">
+					 	<span class="glyphicon glyphicon-import"></span> Charger
+					</button>
+				</td>
+				<td><span class="reload">Reload</span></td>
+			</tr>
+		</tfoot>
+
+		<tbody>
+		</tbody>
+	</table>
+</div>
+</script>
+
+<script type="text/template">
+
+		<% _.each(things.models, function(thing) { %> 
+		    <th id="thing-<%= thing.cid %>" class="thing"></th>
+		<% }); %>
+				
+
+		<tbody>
+			<% var i = 0; %>
+				<% _.each(values.models, function(value) { %> 
+					<% if (0 === (i % things.length)) { %>
+						<% if (i) { %>
+				<td><%= _.now() %></td>
+			</tr>
+						<% } %>
+			<tr>
+				<th id="criterion-<%= criterions.at(Math.round(i/things.length)).cid %>" class="criterions"></th>
 					<% } %>
-		<tr>
-			<th id="criterion-<%= criterions.at(Math.round(i/things.length)).cid %>" class="criterions"></th>
-				<% } %>
-			<td id="value-<%= value.cid %>" class="value"></td>
-			<% 
-			i++;
-			}); %>
-			<td></td>
-		</tr>
-	</tbody>
-</table>
+				<td id="value-<%= value.cid %>" class="value"></td>
+				<% 
+				i++;
+				}); %>
+				<td></td>
+			</tr>
+		</tbody>
+	
 </script>
