@@ -1,4 +1,4 @@
-var AppView = Backbone.View.extend({
+var AppView = ParentView.extend({
 
 	el: $("#app"),
 

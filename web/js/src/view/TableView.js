@@ -1,4 +1,4 @@
-var TableView = Backbone.View.extend({
+var TableView = ParentView.extend({
 
 	tagName: 'div',
 	className: '',
@@ -7,22 +7,17 @@ var TableView = Backbone.View.extend({
 	/**
 		Subviews
 	**/
-	valuesView: null,
-	thingsView: null,
-	criterionsView: null,
-
 	exportView: null,
-	importView: null,
-    valueView: null,
-	titleView: null,
+    importView: null,
+
+    tHeadView: null,
+    tFootView: null,
+    tBodyView: null,
 
 	/**
 		Initialize
 	**/
 	initialize: function() {
-	    this.listenTo(this.model, 'load', this.render);
-	    this.listenTo(this.model, 'change', this.render)	    
-
 	    var Truc = new ThingModel({'label': 'Truc', 'order': 1});
 	    var Machin = new ThingModel({'label': 'Machin', 'order': 2});
 	    var Chose = new ThingModel({'label': 'Chose', 'order': 3});
@@ -57,58 +52,20 @@ var TableView = Backbone.View.extend({
 			el: '#export',
 		});
 
+        this.tHeadView = new TableHeadView();
+        this.tFootView = new TableFootView();
+        this.tBodyView = new TableBodyView();
+
         tableTitle = new TitleModel();
         this.titleView = new TitleView({model: tableTitle});
 
-	    // this.listenTo(values, 'sort', this.renderViews);
-	    // this.listenTo(things, 'sort', this.renderViews);
-	    // this.listenTo(criterions, 'sort', this.renderViews);
-
-	    // this.listenTo(things, 'reset', this.initializeViews);
-	    // this.listenTo(criterions, 'reset', this.initializeViews);
-	    // this.listenTo(values, 'reset', this.initializeViews);
-
-	    // this.initializeViews();
+	    this.listenTo(values, 'reset', this.render);
 
 	    this.render();
 
-        this.addItems();
+        // this.addItems();
         
         this.loaderStop();
-	},
-
-	/**
-		Initialize subviews (things, criterions and values)
-	**/
-	initializeViews: function() {
-        console.log('initializeViews');
-
-	    this.thingsView = new Array();
-        for (var i = 0; i < things.length; i++) {
-        	var thing = things.at(i);
-        	var view = new ThingView({
-        		model: thing,
-        	});
-        	this.thingsView.push(view);
-        }
-
-        this.criterionsView = new Array();
-        for (var i = 0; i < criterions.length; i++) {
-        	var criterion = criterions.at(i);
-        	var view = new CriterionView({
-        		model: criterion,
-        	});
-        	this.criterionsView.push(view);
-        }
-
-        this.valuesView = new Array();
-        for (var i = 0; i < values.length; i++) {
-        	var value = values.at(i);
-        	var view = new ValueView({
-        		model: value,
-        	});
-        	this.valuesView.push(view);
-        }
 	},
 
     /**
@@ -120,57 +77,33 @@ var TableView = Backbone.View.extend({
         values.each(this.addValue, this);
     },
 
-	/**
-		Render
-	**/
-	render: function() {
-        console.log('render');
-
+    /**
+        Render
+    **/
+    render: function() {
         template = _.template($("#table_template").html());
         var html = template(this.model.toJSON());
         this.$el.html(html);
 
-        // this.renderViews();
-    },
+        this.assign(this.tFootView, 'tfoot');
+        this.assign(this.tHeadView, 'thead');
+        this.assign(this.tBodyView, 'tbody');
 
-    /**
-        Render views
-    **/
-    renderViews: function () {
-        this.loaderStart();
+        this.tHeadView.$('th:first').append(this.titleView.render().el);
 
-        this.titleView.setElement('#table-title');
-        this.titleView.render();
-
-        for (var i = 0; i < this.thingsView.length; i++) {
-            var selector = '#thing-' + this.thingsView[i].model.cid;
-            this.thingsView[i].setElement(selector);
-            this.thingsView[i].render();
-        }
-
-        for (var i = 0; i < this.criterionsView.length; i++) {
-            var selector = '#criterion-' + this.criterionsView[i].model.cid;
-            this.criterionsView[i].setElement(selector);
-            this.criterionsView[i].render();
-        }
-
-        for (var i = 0; i < this.valuesView.length; i++) {
-            var selector = '#value-' + this.valuesView[i].model.cid;
-            this.valuesView[i].setElement(selector);
-            this.valuesView[i].render();
-        }
-
+        things.each(this.addThing, this);
+        criterions.each(this.addCriterion, this);
+        values.each(this.addValue, this);
+        
         this.loaderStop();
-
-        return this;
     },
 
 	/**
 		Events
 	**/
     events: {
-        "click .action-add-thing": "addThing",
-        "click .action-add-criterion": "addCriterion",
+        "click .action-add-thing": "createThing",
+        "click .action-add-criterion": "createCriterion",
 
         "click .action-export-table": "openExportPage",
         "click .action-import-table": "openImportPage",
@@ -181,32 +114,29 @@ var TableView = Backbone.View.extend({
         "click .reload": "render",
     },
 
+    /**
+        Create a new thing
+    **/
+    createThing: function() {
+        var newThing = new ThingModel();
+        things.add([newThing]);
+
+        this.addThing(newThing);
+    },
+
 	/**
 		Add a thing
 	**/
 	addThing: function(newThing) {
-        if (_.isUndefined(newThing) || ! (newThing instanceof ThingModel)) {
-		  var newThing = new ThingModel();
-        }
-		things.add([newThing]);
-		
-    	var view = new ThingView({
-    		model: newThing,
-    	});
-    	// this.thingsView.push(view);
-
-        var target = this.$el.find('thead th:last');
-        target.before(view.render().el);
+        this.tHeadView.addThing(newThing);
 
         for (var i = 0; i < criterions.length; i++) {
             this.createValue({
                 thing: newThing,
                 criterion: criterions.at(i),
             });
-        }
-
-		view.focus();
-	},
+        }	
+    },
 
 	/**
 		Remove a thing
@@ -216,27 +146,21 @@ var TableView = Backbone.View.extend({
 		things.remove(thing);
 	},
 
+    /**
+        Create a new critetion
+    **/
+    createCriterion: function() {
+        var newCriterion = new CriterionModel();
+        criterions.add([newCriterion]);
+
+        this.addCriterion(newCriterion);
+    },
+
 	/**
 		Add a criterion
 	**/
 	addCriterion: function(newCriterion) {
-        if (_.isUndefined(newCriterion) || ! (newCriterion instanceof CriterionModel)) {
-	       var newCriterion = new CriterionModel();
-        }
-		criterions.add([newCriterion]);
-		
-    	var view = new CriterionView({
-    		model: newCriterion,
-    	});
-
-        var rowView = new TableRowView({
-            model: newCriterion,
-        });
-
-        this.$el.find('tbody').append(rowView.render().el);
-
-        var target = rowView.$el;
-        target.prepend(view.render().el);
+    	this.tBodyView.addCriterion(newCriterion);
 
         for (var i = 0; i < things.length; i++) {
             var thing = things.at(i);
@@ -247,8 +171,6 @@ var TableView = Backbone.View.extend({
                 criterion: criterion,
             });
         }
-
-		view.focus();
 	},
 
 	/**
@@ -272,19 +194,7 @@ var TableView = Backbone.View.extend({
         Add a value
     **/
     addValue: function(newValue) {
-        var view = new ValueView({
-            model: newValue,
-        });
-        // this.valuesView.push(view);
-
-        values.add(newValue, {silent: true});
-
-        var criterionIndex = newValue.get('criterion').get('order') - 1;
-        var target = this.$el.find('tbody tr:eq(' + criterionIndex + ') td:last');
-        console.log(target);
-        target.before(view.render().el);
-
-        view.focus();
+        this.tBodyView.addValue(newValue);
     },
 
 	/**

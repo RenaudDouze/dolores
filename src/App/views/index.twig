@@ -56,9 +56,14 @@
     
     {% include('template/TitleTemplate.html.underscore') %}
     {% include('template/TableRowTemplate.html.underscore') %}
+    {% include('template/TableHeadTemplate.html.underscore') %}
+    {% include('template/TableFootTemplate.html.underscore') %}
+    {% include('template/TableBodyTemplate.html.underscore') %}
     {% include('template/TableTemplate.html.underscore') %}
 
 	<!-- Views -->
+    <script src="{{ app.request.basePath }}/js/src/view/ParentView.js"></script>
+    
     <script src="{{ app.request.basePath }}/js/src/view/AlertView.js"></script>
     <script src="{{ app.request.basePath }}/js/src/view/ListView.js"></script>
 
@@ -73,6 +78,9 @@
     
     <script src="{{ app.request.basePath }}/js/src/view/TitleView.js"></script>
     <script src="{{ app.request.basePath }}/js/src/view/TableRowView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/TableHeadView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/TableFootView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/TableBodyView.js"></script>
     <script src="{{ app.request.basePath }}/js/src/view/TableView.js"></script>
 
     <script src="{{ app.request.basePath }}/js/src/view/AppView.js"></script>

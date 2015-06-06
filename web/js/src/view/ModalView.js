@@ -1,4 +1,4 @@
-var ModalView = Backbone.View.extend({
+var ModalView = ParentView.extend({
 
 	tagName: 'body',
 

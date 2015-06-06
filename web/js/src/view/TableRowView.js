@@ -1,4 +1,4 @@
-var TableRowView = Backbone.View.extend({
+var TableRowView = ParentView.extend({
 
     /**
         Tab name
@@ -32,5 +32,29 @@ var TableRowView = Backbone.View.extend({
         this.$el.html(tpl(this.model.toJSON()));
         
         return this;
+    },
+
+    /**
+        Add a criterion
+    **/
+    addCriterion: function(criterion) {
+        var view = new CriterionView({
+            model: criterion,
+        });
+
+        this.$el.prepend(view.render().el);
+
+        view.focus();
+    },
+
+    /**
+        Add a value
+    **/
+    addValue: function(value) {
+        var view = new ValueView({
+            model: value,
+        });
+
+        this.$('td:last').before(view.render().el);
     },
 });   

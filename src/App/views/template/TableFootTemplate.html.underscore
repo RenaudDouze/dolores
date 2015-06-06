@@ -1,0 +1,20 @@
+<script type="text/template" id="table_foot_template">   
+<tr>
+    <th>
+        <span class="btn btn-info btn-xs pull-right action-add action-add-criterion">
+            <span class="glyphicon glyphicon-plus"></span> Ajouter
+        </span>
+    </th>
+
+    <td colspan="<%= things.length + 1 %>">
+        <button type="button" class="btn btn-default btn-xs action-export action-export-table">
+            <span class="glyphicon glyphicon-export"></span> Sauvegarder
+        </button>
+        <button type="button" class="btn btn-default btn-xs action-import action-import-table">
+            <span class="glyphicon glyphicon-import"></span> Charger
+        </button>
+
+        <span class="reload">Reload</span>
+    </td>
+</tr>
+</script>
