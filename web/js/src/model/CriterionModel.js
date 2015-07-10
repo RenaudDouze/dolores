@@ -3,15 +3,21 @@ var CriterionModel = CellModel.extend({
 	// string Name
 	label: '',
 
-	// int Order
-	order: 0,
+    // integer Order
+    order: 0,
+
+    // integer Default order
+    defaultOrder: 0,
 
 	defaults: function() {
-		var order = criterions.nextOrder();
-      	return {
-        	label: 'Point ' + order,
-        	order: order,
-      	};
+        var order = things.nextOrder();
+
+        this.defaultOrder = order;
+
+        return {
+            label: 'Crit. ' + order,
+            order: order,
+        };
     },
 
 	/**

@@ -25,7 +25,7 @@ var ImportView = ModalView.extend({
 			var json = JSON.parse(text);
             
             tableTitle.set(json.title);
-			values.load(json.values);
+			cValue.load(json.values);
 
             this.loaderStop();
             this.alert.set('success', "Et voilà !");

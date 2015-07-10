@@ -6,7 +6,7 @@
         </span>
     </th>
 
-    <th rowspan="<%= criterions.length + 1 %>">
+    <th>
         <span class="btn btn-info btn-xs pull-right action-add action-add-thing">
             <span class="glyphicon glyphicon-plus"></span> Ajouter
         </span>

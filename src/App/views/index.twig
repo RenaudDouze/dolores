@@ -21,10 +21,14 @@
 
 
 {% block closing_scripts %}
+    <!-- Lib -->
+    <script src="{{ app.request.basePath }}/js/lib/string.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/lib/ValueSorting.js"></script>
+
     <!-- Exceptions -->
     <script src="{{ app.request.basePath }}/js/src/exception/DoloresJsonNotCompatibleException.js"></script>
 
-	<!-- Models -->
+    <!-- Models -->
     <script src="{{ app.request.basePath }}/js/src/model/AlertModel.js"></script>
     
     <script src="{{ app.request.basePath }}/js/src/model/CellModel.js"></script>
@@ -68,6 +72,7 @@
     <script src="{{ app.request.basePath }}/js/src/view/ListView.js"></script>
 
     <script src="{{ app.request.basePath }}/js/src/view/CellView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/CellSortableView.js"></script>
     <script src="{{ app.request.basePath }}/js/src/view/ThingView.js"></script>
     <script src="{{ app.request.basePath }}/js/src/view/CriterionView.js"></script>
     <script src="{{ app.request.basePath }}/js/src/view/ValueView.js"></script>
@@ -87,7 +92,10 @@
 
     <!-- Execution -->
     <script type="text/javascript">
-    	var app, table, tableView, tableTitle, save, things, criterions, values = null;
+    	var app, table, tableView, tableTitle, save, things, criterions, cValue = null;
+        var sortModel = sortOrder = null;
+        var sorting = {};
+
 	    function main () {
 	    	things = new ThingCollection();
 	    	criterions = new CriterionCollection();

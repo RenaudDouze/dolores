@@ -36,6 +36,8 @@ $app['web_path'] = $app->share(function () {
     return realpath(__DIR__ . '/../web/');
 });
 
+
+
 // Map routes to controllers
 include __DIR__ . '/routing.php';
 

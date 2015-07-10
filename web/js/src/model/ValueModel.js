@@ -3,6 +3,9 @@ var ValueModel = CellModel.extend({
 	// string Data
 	data: '',
 
+    // integer Order
+    order: null,
+
 	relations: [
 		{
 			type: Backbone.HasOne,
@@ -21,6 +24,7 @@ var ValueModel = CellModel.extend({
 
     defaults: {
         data: '',
+        order: null,
     },
 
 	/**

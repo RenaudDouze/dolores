@@ -11,3 +11,14 @@ th:hover .action-remove,
 td:hover .action-remove {
     opacity: 1;
 }
+
+.action-sort .glyphicon-sort-by-order,
+.action-sort.sort-asc .glyphicon-sort-by-order,
+.action-sort.sort-desc .glyphicon-sort-by-order-alt {
+    display: inline-block;
+}
+.action-sort .glyphicon-sort-by-order-alt,
+.action-sort.sort-desc .glyphicon-sort-by-order,
+.action-sort.sort-asc .glyphicon-sort-by-order-alt {
+    display: none;
+}

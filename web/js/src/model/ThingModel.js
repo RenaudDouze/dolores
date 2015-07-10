@@ -3,22 +3,29 @@ var ThingModel = CellModel.extend({
 	// string Label
 	label: '',
 
-	// int Order
-	order: 0,
+    // integer Order
+    order: 0,
 
-	defaults: function() {
-		var order = things.nextOrder();
-      	return {
-        	label: 'Bidule ' + order,
-        	order: order,
-      	};
+    // integer Default order
+    defaultOrder: 0,
+
+    defaults: function() {
+        var order = things.nextOrder();
+
+        this.defaultOrder = order;
+
+        return {
+            label: 'Bidule ' + order,
+            order: order,
+        };
     },
 
-	/**
-		Method to set the main data
-	**/
-	setData: function(data) {
-		this.set('label', data);
-	},
+    /**
+        Method to set the main data
+    **/
+    setData: function(data) {
+        this.set('label', data);
+    },
+
 
 });

@@ -1,4 +1,4 @@
-var ThingView = CellView.extend({
+var ThingView = CellSortableView.extend({
     /**
         Tab name
     **/
@@ -14,21 +14,36 @@ var ThingView = CellView.extend({
 	**/
 	templateSelector: '#thing_template',
 
+    /**
+        Field name in ValueModel
+    **/
+    fieldName: 'thing',
+
 	/**
 		Events
 	**/
     events: function () {
-    	var events = CellView.prototype.events;
+    	var events = CellSortableView.prototype.events;
 
     	return _.extend(events, {
-        	"click .action-remove-thing.btn": "removeThing",
+            "click .action-remove.btn": "removeThing",
+        	"click .action-sort.btn": "sortByThing",
   	  	});
     },
 
-	/**
-		Remove a thing
-	**/
-	removeThing: function(e) {
-		tableView.removeThing(this.model);
-	},
+    /**
+        Remove a thing
+    **/
+    removeThing: function(e) {
+        console.log(this.modelKey);
+        // tableView.removeThing(this.model);
+    },
+
+    /**
+        Sort by thing
+    **/
+    sortByThing: function(e) {
+        var filter = {thing: this.model}; 
+        this.sortBy(filter);
+    },
 });

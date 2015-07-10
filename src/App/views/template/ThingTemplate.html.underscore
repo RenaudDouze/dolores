@@ -1,6 +1,15 @@
 <script type="text/template" id="thing_template">
+
 <span class="thing" contenteditable="true"><%= label %></span>
-<span class="btn btn-danger btn-xs pull-right action-remove action-remove-thing" title="Enlever la chose">
- 	<span class="glyphicon glyphicon-remove-circle"></span> Virer
+
+<span class="btn btn-danger btn-xs pull-right action-remove action-remove-thing" title="Virer">
+ 	<span class="glyphicon glyphicon-remove-circle"></span>
 </span>
+<span title="Trier"
+    class="btn <%= ((activeOrder) ? 'btn-info active sort-' + activeOrder : 'btn-default') %> btn-xs pull-right action-sort action-sort-thing" 
+>
+    <span class="glyphicon glyphicon-sort-by-order"></span>
+    <span class="glyphicon glyphicon-sort-by-order-alt"></span>
+</span>
+
 </script>

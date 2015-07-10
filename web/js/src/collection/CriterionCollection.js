@@ -5,8 +5,8 @@ var CriterionCollection = Backbone.Collection.extend({
 	/**
 		To maintain order
 	**/
-	comparator: function(critetion) {
-	 	return critetion.get('order');
+	comparator: function(model) {
+	 	return model.get('order');
 	},
 
 	/**

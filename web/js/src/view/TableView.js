@@ -18,13 +18,13 @@ var TableView = ParentView.extend({
 		Initialize
 	**/
 	initialize: function() {
-	    var Truc = new ThingModel({'label': 'Truc', 'order': 1});
-	    var Machin = new ThingModel({'label': 'Machin', 'order': 2});
-	    var Chose = new ThingModel({'label': 'Chose', 'order': 3});
+	    var Truc = new ThingModel({'label': 'Truc', order: 1, defaultOrder: 1});
+	    var Machin = new ThingModel({'label': 'Machin', order: 2, defaultOrder: 2});
+	    var Chose = new ThingModel({'label': 'Chose', order: 3, defaultOrder: 3});
 
-	    var Critere1 = new CriterionModel({'label': 'Crit. A', 'order': 1});
-	    var Critere2 = new CriterionModel({'label': 'Crit. B', 'order': 2});
-	    var Critere3 = new CriterionModel({'label': 'Crit. C', 'order': 3});
+	    var Critere1 = new CriterionModel({'label': 'Crit. A', order: 1, defaultOrder: 1});
+	    var Critere2 = new CriterionModel({'label': 'Crit. B', order: 2, defaultOrder: 2});
+	    var Critere3 = new CriterionModel({'label': 'Crit. C', order: 3, defaultOrder: 3});
 
 	    var ValueTruc1 = new ValueModel({'data': 'Truc-1', 'thing': Truc, 'criterion': Critere1});
 	    var ValueTruc2 = new ValueModel({'data': 'Truc-2', 'thing': Truc, 'criterion': Critere2});
@@ -38,9 +38,12 @@ var TableView = ParentView.extend({
 	    var ValueChose2 = new ValueModel({'data': 'Chose-2', 'thing': Chose, 'criterion': Critere2});
 	    var ValueChose3 = new ValueModel({'data': 'Chose-3', 'thing': Chose, 'criterion': Critere3});
 
-	    things = new ThingCollection([Truc, Machin, Chose]);
-	    criterions = new CriterionCollection([Critere1, Critere2, Critere3]);
-	    values = new ValueCollection([ValueTruc1, ValueMachin1, ValueChose1, ValueTruc2, ValueMachin2, ValueChose2, ValueTruc3, ValueMachin3, ValueChose3]); 
+	    things = new ThingCollection;
+        things.add([Truc, Machin, Chose]);
+        criterions.add([Critere1, Critere2, Critere3]);
+
+	    cValue = new ValueCollection;
+        cValue.add([ValueTruc1, ValueMachin1, ValueChose1, ValueTruc2, ValueMachin2, ValueChose2, ValueTruc3, ValueMachin3, ValueChose3]); 
 
 		save = new SaveModel();
 		this.importView = new ImportView({
@@ -59,23 +62,14 @@ var TableView = ParentView.extend({
         tableTitle = new TitleModel();
         this.titleView = new TitleView({model: tableTitle});
 
-	    this.listenTo(values, 'reset', this.render);
+        this.listenTo(cValue, 'reset', this.render);
+        this.listenTo(things, 'sort', this.render);
+	    this.listenTo(criterions, 'sort', this.render);
 
 	    this.render();
 
-        // this.addItems();
-        
         this.loaderStop();
 	},
-
-    /**
-        Add collections's items
-    **/
-    addItems: function() {
-        things.each(this.addThing, this);
-        criterions.each(this.addCriterion, this);
-        values.each(this.addValue, this);
-    },
 
     /**
         Render
@@ -93,7 +87,7 @@ var TableView = ParentView.extend({
 
         things.each(this.addThing, this);
         criterions.each(this.addCriterion, this);
-        values.each(this.addValue, this);
+        cValue.each(this.addValue, this);
         
         this.loaderStop();
     },
@@ -111,7 +105,11 @@ var TableView = ParentView.extend({
         "click th": "focusToEditableContent",
         "click td": "focusToEditableContent",
 
-        "click .reload": "render",
+        "click .reload": "reload",
+    },
+
+    reload: function () {
+        things.sort();
     },
 
     /**
@@ -185,7 +183,7 @@ var TableView = ParentView.extend({
 		Create a new value from attributes 
 	**/
 	createValue: function(attributes) {
-        if (! values.where(attributes).length) {
+        if (! cValue.where(attributes).length) {
             this.addValue(new ValueModel(attributes));
         }
 	},
@@ -203,7 +201,7 @@ var TableView = ParentView.extend({
 	openExportPage: function() {
         var data = _.extend(
             {title: tableTitle},
-            {values: values}
+            {cValue: cValue}
         );
 
 		save.set('data', JSON.stringify(data));
@@ -215,7 +213,7 @@ var TableView = ParentView.extend({
 		Open the import page
 	**/
 	openImportPage: function() {
-		save.set('data', JSON.stringify(values));
+		save.set('data', JSON.stringify(cValue));
 		
 		this.importView.open();
 	},

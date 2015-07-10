@@ -2,10 +2,92 @@ var ValueCollection = Backbone.Collection.extend({
 	model: ValueModel,
 
 	/**
+		Sorting model and order
+	**/
+	sorting: null,
+    /**
+        Initialize
+    **/
+    initialize: function() {
+        Backbone.Collection.prototype.initialize.call(this);
+
+        this.sorting = ValueSorting;
+    },
+
+    /**
+    	Sort the collection
+    **/
+    tableSort: function() {
+        _.each(cValue.models , function(element, index, list) {
+        	element.set('order', 0);
+        });
+
+        var i = 0;
+    	_.each(this.sorting.get(), function(sortingElement, sortIndex, sortList) {
+    		var field = sortingElement.field;
+			var model = sortingElement.model;
+
+			var filter = {};
+			filter[field] = model;
+
+			var sortedValues = _.sortBy(cValue.where(filter), 'datas');
+
+            if (cValue.sorting.SORT_DESC === sortingElement.order) {
+                sortedValues = sortedValues.reverse();
+            }
+
+            var sortOrder = 0;
+            _.each(sortedValues, function(element, index, list) {
+            	var order = null;
+
+            	if (0 < index) {
+            		var prev = list[index - 1];
+            		if (element.get('data') === prev.get('data')) {
+            			order = prev.get('order');
+            		} 
+
+            	}
+
+            	if (_.isNull(order)) {
+            		order = sortOrder++;
+            	}
+
+            	element.set('order', order);
+            });
+
+            // Set order
+	        _.each(sortedValues, function(element, index, list) {
+        		if ('criterion' === field) {
+        			var order = element.get('order');
+
+		        	element.get('thing').set('order', order);
+        		}
+
+        		if ('thing' === field) {
+        			var order = element.get('order');
+
+		        	element.get('criterion').set('order', order);
+        		}
+	        });
+
+	        i++;
+		});
+
+
+		/**/
+
+        this.sort();
+
+        // Only one have to trigger sort event to avoid double trigger 
+        criterions.sort({silent: true});
+        things.sort();
+    },
+
+	/**
 		To maintain order
 	**/
-	comparator: function(value) {
-		return value.get('criterion').get('order') + '.' + value.get('thing').get('order');
+	comparator: function(model) {
+    	return model.get('thing').get('order') + '.' + model.get('criterion').get('order');
 	},
 
 	/**
@@ -50,8 +132,8 @@ var ValueCollection = Backbone.Collection.extend({
 			}
 		});
 
-		values.reset(newValues);
-		values.sort();
+		cValue.reset(newValues);
+		cValue.sort();
 
 		if (! _.isEmpty(errors)) {
 			throw new DoloresJsonNotCompatibleException(errors);

@@ -5,8 +5,8 @@ var ThingCollection = Backbone.Collection.extend({
 	/**
 		To maintain order
 	**/
-	comparator: function(thing) {
-	 	return thing.get('order');
+	comparator: function(model) {
+	 	return model.get('order');
 	},
 
 	/**
