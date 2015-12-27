@@ -1,0 +1,7 @@
+<script type="text/template" id="list_template">
+<ul>
+<% _.each(datas, function (element, index, list) { %>
+    <li><%= element %></li>
+<% }) %>
+</ul>
+</script>

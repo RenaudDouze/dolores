@@ -1,0 +1,111 @@
+{% extends 'layout.twig' %}
+{% block title %}DefaultController::index{% endblock %}
+
+{% block content %}
+
+<div id="app" class="container">
+	<header>
+		<h1>Dolores</h1>
+	</header>
+
+	<section id="main">
+		<div id="tableContent"></div>
+		<div id="export"></div>
+		<div id="import"></div>
+	</section>
+
+	<footer>Ceci est un comparateur, pour comparer quoique tu veux</footer>
+</div>
+
+{% endblock %}
+
+
+{% block closing_scripts %}
+    <!-- Lib -->
+    <script src="{{ app.request.basePath }}/js/src/lib/debug.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/lib/ValueSorting.js"></script>
+
+    <!-- Exceptions -->
+    <script src="{{ app.request.basePath }}/js/src/exception/DoloresJsonNotCompatibleException.js"></script>
+
+    <!-- Models -->
+    <script src="{{ app.request.basePath }}/js/src/model/AlertModel.js"></script>
+
+    <script src="{{ app.request.basePath }}/js/src/model/CellModel.js"></script>
+
+    <script src="{{ app.request.basePath }}/js/src/model/ThingModel.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/model/CriterionModel.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/model/ValueModel.js"></script>
+
+    <script src="{{ app.request.basePath }}/js/src/model/SaveModel.js"></script>
+
+    <script src="{{ app.request.basePath }}/js/src/model/TitleModel.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/model/TableModel.js"></script>
+
+	<!-- Collections -->
+    <script src="{{ app.request.basePath }}/js/src/collection/ThingCollection.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/collection/CriterionCollection.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/collection/ValueCollection.js"></script>
+
+	<!-- Templates -->
+    {% include('template/AlertTemplate.html.underscore') %}
+    {% include('template/ListTemplate.html.underscore') %}
+
+    {% include('template/ThingTemplate.html.underscore') %}
+    {% include('template/CriterionTemplate.html.underscore') %}
+    {% include('template/ValueTemplate.html.underscore') %}
+
+    {% include('template/ExportTemplate.html.underscore') %}
+    {% include('template/ImportTemplate.html.underscore') %}
+
+    {% include('template/TitleTemplate.html.underscore') %}
+    {% include('template/TableRowTemplate.html.underscore') %}
+    {% include('template/TableHeadTemplate.html.underscore') %}
+    {% include('template/TableFootTemplate.html.underscore') %}
+    {% include('template/TableBodyTemplate.html.underscore') %}
+    {% include('template/TableTemplate.html.underscore') %}
+
+	<!-- Views -->
+    <script src="{{ app.request.basePath }}/js/src/view/ParentView.js"></script>
+
+    <script src="{{ app.request.basePath }}/js/src/view/AlertView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/ListView.js"></script>
+
+    <script src="{{ app.request.basePath }}/js/src/view/CellView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/CellSortableView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/ThingView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/CriterionView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/ValueView.js"></script>
+
+    <script src="{{ app.request.basePath }}/js/src/view/ModalView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/ExportView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/ImportView.js"></script>
+
+    <script src="{{ app.request.basePath }}/js/src/view/TitleView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/TableRowView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/TableHeadView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/TableFootView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/TableBodyView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/TableView.js"></script>
+
+    <script src="{{ app.request.basePath }}/js/src/view/AppView.js"></script>
+
+    <!-- Execution -->
+    <script type="text/javascript">
+    	var app, table, tableView, tableTitle, save, things, criterions, cValue = null;
+        var sortModel = sortOrder = null;
+        var sorting = {};
+
+	    function main () {
+	    	things = new ThingCollection();
+	    	criterions = new CriterionCollection();
+	    	values = new ValueCollection();
+
+	    	app = new AppView();
+	    }
+
+	    $(document).ready(function() {
+	    	main();
+		});
+    </script>
+{% endblock %}

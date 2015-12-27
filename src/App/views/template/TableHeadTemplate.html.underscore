@@ -1,0 +1,15 @@
+<script type="text/template" id="table_head_template">
+<tr>
+    <th>
+        <span class="loader">
+            <img src="/img/ajax-loader.gif" alt="Ça charge" title="Ça charge" />
+        </span>
+    </th>
+
+    <th>
+        <span class="btn btn-info btn-xs pull-right action-add action-add-thing">
+            <span class="glyphicon glyphicon-plus"></span> Ajouter
+        </span>
+    </th>
+</tr>
+</script>

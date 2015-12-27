@@ -1,0 +1,45 @@
+# Lint: http://lint.travis-ci.org
+
+notifications:
+  email:
+    - gunnar@aptoma.com
+
+language: php
+
+php:
+  - 5.3
+  - 5.4
+
+env:
+  global:
+    # travis encrypt CODECLIMATE_REPO_TOKEN=<https://codeclimate.com/repos/5375ae13e30ba0535b00a710/coverage_setup>
+    - secure: "edf80QwiEfarXXZHsvupedtjgUYYSwB56su8P4AGAFk060tcPdjlu29rPUAux09UCO6/D7FynBjuaWZj1TYvIuYJm3ih5GUmDvG5iViXvq8VUcI0LbNeth0Jg49xRH+Db21Sx1M+nvWIkQHVOqzDFuFRmVR97mzWLFLF8+BIZU4="
+
+cache:
+  directories:
+    - vendor
+    - node_modules
+
+git:
+  submodules: false
+
+before_install:
+
+install:
+  - npm install
+
+before_script:
+  - phpenv config-add php.ini
+  - mkdir -p app/log
+  - mkdir -p app/cache
+  - mkdir -p build/logs
+  - rm -rf app/cache/twig/*
+  - rm -rf app/cache/assetic/*
+
+script:
+  - ./node_modules/grunt-cli/bin/grunt travis
+
+after_script:
+  - php vendor/bin/coveralls -v
+  - ./vendor/bin/test-reporter --stdout > codeclimate.json
+  - "curl -X POST -d @codeclimate.json -H 'Content-Type: application/json' -H 'User-Agent: Code Climate (PHP Test Reporter v1.0.1-dev)' https://codeclimate.com/test_reports"

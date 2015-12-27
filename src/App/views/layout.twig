@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <title>Dolores - Le comparateur qui compare quoique tu veux</title>
+
+        <link rel="stylesheet" href="{{ app.request.basePath }}/css/styles.css" type="text/css" />
+        <link rel="stylesheet" href="{{ app.request.basePath }}/css/lib/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="{{ app.request.basePath }}/css/lib/m-progress.css" type="text/css" />
+
+        <script src="{{ app.request.basePath }}/js/lib/jquery-min.js"></script>
+        <script src="{{ app.request.basePath }}/js/lib/underscore-min.js"></script>
+        <script src="{{ app.request.basePath }}/js/lib/backbone-min.js"></script>
+        <script src="{{ app.request.basePath }}/js/lib/bootstrap.min.js"></script>
+        <script src="{{ app.request.basePath }}/js/lib/backbone-relational.js"></script>
+
+        {% block head %}{% endblock %}
+
+        <link rel="shortcut icon" href="{{ app.request.basePath }}/favicon.ico" />
+    </head>
+    <body>
+        {% block content %}{% endblock %}
+
+        {% block closing_scripts %}{% endblock %}
+    </body>
+</html>

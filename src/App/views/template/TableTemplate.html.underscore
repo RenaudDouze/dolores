@@ -1,0 +1,9 @@
+<script type="text/template" id="table_template">
+<div class="table-responsive">
+	<table class="table table-hover table-striped table-bordered" id="table">
+        <thead></thead>
+        <tfoot></tfoot>
+		<tbody></tbody>
+	</table>
+</div>
+</script>

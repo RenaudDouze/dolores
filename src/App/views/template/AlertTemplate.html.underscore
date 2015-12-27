@@ -1,0 +1,37 @@
+<script type="text/template" id="alert_template">
+<% if (! _.isEmpty(success)) { %>
+<div class="alert alert-success alert-dismissible" role="alert">
+  	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  		<span aria-hidden="true">&times;</span>
+  	</button>
+  	<%= success %>
+</div>
+<% } %>
+
+<% if (! _.isEmpty(info)) { %>
+<div class="alert alert-info alert-dismissible" role="alert">
+  	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  		<span aria-hidden="true">&times;</span>
+  	</button>
+  	<%= info %>
+</div>
+<% } %>
+
+<% if (! _.isEmpty(warning)) { %>
+<div class="alert alert-warning alert-dismissible" role="alert">
+  	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  		<span aria-hidden="true">&times;</span>
+  	</button>
+  	<%= warning %>
+</div>
+<% } %>
+
+<% if (! _.isEmpty(danger)) { %>
+<div class="alert alert-danger alert-dismissible" role="alert">
+  	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  		<span aria-hidden="true">&times;</span>
+  	</button>
+  	<%= danger %>
+</div>
+<% } %>
+</script>
