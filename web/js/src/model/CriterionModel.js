@@ -10,7 +10,7 @@ var CriterionModel = CellModel.extend({
     defaultOrder: 0,
 
 	defaults: function() {
-        var order = things.nextOrder();
+        var order = criterions.nextOrder();
 
         this.defaultOrder = order;
 
