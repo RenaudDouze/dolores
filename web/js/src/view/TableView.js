@@ -202,7 +202,7 @@ var TableView = ParentView.extend({
 	openExportPage: function() {
         var data = _.extend(
             {title: tableTitle},
-            {cValue: cValue}
+            {values: cValue}
         );
 
 		save.set('data', JSON.stringify(data));
