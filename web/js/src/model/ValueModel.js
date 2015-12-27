@@ -34,4 +34,19 @@ var ValueModel = CellModel.extend({
 		this.set('data', data);
 	},
 
+	/**
+		Return data on correct format
+		Convert string-integer to proper integer
+	**/
+	getData: function() {
+		var data = this.get('data');
+		var intData = 1 * data;
+
+		if (_.isNumber(intData) && ! _.isNaN(intData)) {
+			return intData;
+		}
+
+		return data;
+	}
+
 });

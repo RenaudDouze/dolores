@@ -15,73 +15,81 @@ var ValueCollection = Backbone.Collection.extend({
     },
 
     /**
-    	Sort the collection
+    	Sort the table
+
+		@return void
     **/
     tableSort: function() {
-        _.each(cValue.models , function(element, index, list) {
-        	element.set('order', 0);
-        });
+    	var sort = this.sorting.last();
 
-        var i = 0;
-    	_.each(this.sorting.get(), function(sortingElement, sortIndex, sortList) {
-    		var field = sortingElement.field;
-			var model = sortingElement.model;
-
-			var filter = {};
-			filter[field] = model;
-
-			var sortedValues = _.sortBy(cValue.where(filter), 'datas');
-
-            if (cValue.sorting.SORT_DESC === sortingElement.order) {
-                sortedValues = sortedValues.reverse();
-            }
-
-            var sortOrder = 0;
-            _.each(sortedValues, function(element, index, list) {
-            	var order = null;
-
-            	if (0 < index) {
-            		var prev = list[index - 1];
-            		if (element.get('data') === prev.get('data')) {
-            			order = prev.get('order');
-            		} 
-
-            	}
-
-            	if (_.isNull(order)) {
-            		order = sortOrder++;
-            	}
-
-            	element.set('order', order);
-            });
-
-            // Set order
-	        _.each(sortedValues, function(element, index, list) {
-        		if ('criterion' === field) {
-        			var order = element.get('order');
-
-		        	element.get('thing').set('order', order);
-        		}
-
-        		if ('thing' === field) {
-        			var order = element.get('order');
-
-		        	element.get('criterion').set('order', order);
-        		}
-	        });
-
-	        i++;
-		});
-
-
-		/**/
+		if (! _.isUndefined(sort) && ! _.isNull(sort)) {
+			this.sortValuesDependingCollection(sort.model, sort.field, sort.order);
+		} else {
+			this.resetTableSort();
+		}
 
         this.sort();
 
-        // Only one have to trigger sort event to avoid double trigger 
+        // Only one have to trigger sort event to avoid double trigger
         criterions.sort({silent: true});
         things.sort();
     },
+
+	/**
+		Sort the collections which depends on value
+
+		@param CellModel model Model use to filter
+		@param string    field Target field
+		@param string    order ASC|DESC
+	**/
+	sortValuesDependingCollection: function(model, field, order) {
+		var oppositeCollection = [];
+		if (model instanceof ThingModel) {
+			oppositeCollection = criterions;
+		} else if (model instanceof CriterionModel) {
+			oppositeCollection = things;
+		}
+		_.each(oppositeCollection.models, function(element, index, list) {
+			element.set('order', 0);
+		});
+
+		var filter = {};
+		filter[field] = model;
+
+		var values = this.where(filter);
+		values = _.sortBy(this.where(filter), function(element) {
+			return element.getData();
+		});
+
+		if (cValue.sorting.SORT_DESC == order) {
+			values = values.reverse();
+		}
+		_.each(values, function(element, index, list) {
+			var modelName = null;
+
+			if (model instanceof ThingModel) {
+				modelName = 'criterion';
+			} else if (sort.model instanceof CriterionModel) {
+				modelName = 'thing';
+			}
+
+			if (modelName) {
+				element.get(modelName).set('order', index + 1);
+			}
+		});
+	},
+
+	/**
+		Reset table sort
+	**/
+	resetTableSort: function() {
+		_.each(things.models, function(element, index, list) {
+			element.set('order', element.defaultOrder);
+		});
+		_.each(criterions.models, function(element, index, list) {
+			element.set('order', element.defaultOrder);
+		});
+	},
 
 	/**
 		To maintain order
@@ -114,18 +122,18 @@ var ValueCollection = Backbone.Collection.extend({
 				var thing = things.findWhere(thingData);
 				if (_.isUndefined(thing)) {
 					var thing = new ThingModel(thingData);
-					things.add(thing, {silent: true});	
+					things.add(thing, {silent: true});
 				}
 
 				var criterion = criterions.findWhere(criterionData);
 				if (_.isUndefined(criterion)) {
 					var criterion = new CriterionModel(criterionData);
-					criterions.add(criterion, {silent: true});	
+					criterions.add(criterion, {silent: true});
 				}
 
 				var valueData = element;
-				valueData.thing = thing; 
-				valueData.criterion = criterion; 
+				valueData.thing = thing;
+				valueData.criterion = criterion;
 
 				var value = new ValueModel(valueData);
 				newValues.push(value);

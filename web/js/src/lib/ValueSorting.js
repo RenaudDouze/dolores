@@ -15,6 +15,16 @@ var ValueSorting = {
     models: [],
 
     /**
+        Last added/updated model
+    **/
+    lastModel: null,
+
+    /**
+        Key list
+    **/
+    keys: [],
+
+    /**
         Constants
     **/
     SORT_ASC: 'asc',
@@ -54,6 +64,9 @@ var ValueSorting = {
     add: function(field, model, order) {
         var key = model.cid;
 
+        // Only support one sort at the time
+        this.clean();
+
         if (! this.has(model)) {
             this.fields.push(field);
             this.models.push(model);
@@ -64,6 +77,8 @@ var ValueSorting = {
             field: field,
             order: order,
         };
+
+        this.lastModel = model;
 
         return key;
     },
@@ -100,4 +115,20 @@ var ValueSorting = {
     has: function(model) {
         return (! _.isUndefined(this.data[model.cid]));
     },
+
+    /**
+        Return last added/updated element
+    **/
+    last: function() {
+        return this.get(this.lastModel);
+    },
+
+    /**
+        Clean all elements
+    **/
+    clean: function() {
+        this.fields = [];
+        this.models = [];
+        this.data = {};
+    }
 };
