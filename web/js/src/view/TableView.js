@@ -43,7 +43,7 @@ var TableView = ParentView.extend({
         criterions.add([Critere1, Critere2, Critere3]);
 
 	    cValue = new ValueCollection;
-        cValue.add([ValueTruc1, ValueMachin1, ValueChose1, ValueTruc2, ValueMachin2, ValueChose2, ValueTruc3, ValueMachin3, ValueChose3]); 
+        cValue.add([ValueTruc1, ValueMachin1, ValueChose1, ValueTruc2, ValueMachin2, ValueChose2, ValueTruc3, ValueMachin3, ValueChose3]);
 
 		save = new SaveModel();
 		this.importView = new ImportView({
@@ -88,7 +88,7 @@ var TableView = ParentView.extend({
         things.each(this.addThing, this);
         criterions.each(this.addCriterion, this);
         cValue.each(this.addValue, this);
-        
+
         this.loaderStop();
     },
 
@@ -118,8 +118,6 @@ var TableView = ParentView.extend({
     createThing: function() {
         var newThing = new ThingModel();
         things.add([newThing]);
-
-        this.addThing(newThing);
     },
 
 	/**
@@ -133,7 +131,7 @@ var TableView = ParentView.extend({
                 thing: newThing,
                 criterion: criterions.at(i),
             });
-        }	
+        }
     },
 
 	/**
@@ -148,16 +146,16 @@ var TableView = ParentView.extend({
         Create a new critetion
     **/
     createCriterion: function() {
+        console.log('TableView createCriterion');
         var newCriterion = new CriterionModel();
         criterions.add([newCriterion]);
-
-        this.addCriterion(newCriterion);
     },
 
 	/**
 		Add a criterion
 	**/
 	addCriterion: function(newCriterion) {
+        console.log('TableView addCriterion');
     	this.tBodyView.addCriterion(newCriterion);
 
         for (var i = 0; i < things.length; i++) {
@@ -180,11 +178,14 @@ var TableView = ParentView.extend({
 	},
 
 	/**
-		Create a new value from attributes 
+		Create a new value from attributes
 	**/
 	createValue: function(attributes) {
         if (! cValue.where(attributes).length) {
-            this.addValue(new ValueModel(attributes));
+            var value = new ValueModel(attributes);
+            cValue.add([value]);
+
+            this.addValue(value);
         }
 	},
 
@@ -201,7 +202,7 @@ var TableView = ParentView.extend({
 	openExportPage: function() {
         var data = _.extend(
             {title: tableTitle},
-            {cValue: cValue}
+            {values: cValue}
         );
 
 		save.set('data', JSON.stringify(data));
@@ -214,7 +215,7 @@ var TableView = ParentView.extend({
 	**/
 	openImportPage: function() {
 		save.set('data', JSON.stringify(cValue));
-		
+
 		this.importView.open();
 	},
 

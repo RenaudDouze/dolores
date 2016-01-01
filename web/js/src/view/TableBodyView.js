@@ -9,7 +9,7 @@ var TableBodyView = ParentView.extend({
         Template selector
     **/
     templateSelector: '#table_body_template',
-    
+
     /**
         Subviews
     **/
@@ -28,7 +28,7 @@ var TableBodyView = ParentView.extend({
     render: function() {
         var tpl = this.template();
         this.$el.html(tpl());
-        
+
         return this;
     },
 
@@ -36,6 +36,7 @@ var TableBodyView = ParentView.extend({
         Add a criterion
     **/
     addCriterion: function(criterion) {
+        console.log('TableBodyView addCriterion');
         var view = new TableRowView({
             model: criterion,
         });
@@ -52,10 +53,10 @@ var TableBodyView = ParentView.extend({
     addValue: function(value) {
         var criterionCId = value.get('criterion').cid;
 
-        if (! _.isUndefined(this.rowViews[criterionCId]) 
+        if (! _.isUndefined(this.rowViews[criterionCId])
             && !_.isNull(this.rowViews[criterionCId])
         ) {
             this.rowViews[criterionCId].addValue(value);
         }
     },
-});   
+});

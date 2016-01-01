@@ -30,7 +30,7 @@ var TableRowView = ParentView.extend({
     render: function() {
         var tpl = this.template();
         this.$el.html(tpl(this.model.toJSON()));
-        
+
         return this;
     },
 
@@ -38,6 +38,7 @@ var TableRowView = ParentView.extend({
         Add a criterion
     **/
     addCriterion: function(criterion) {
+        console.log('TableRowView addCriterion');
         var view = new CriterionView({
             model: criterion,
         });
@@ -57,4 +58,4 @@ var TableRowView = ParentView.extend({
 
         this.$('td:last').before(view.render().el);
     },
-});   
+});
