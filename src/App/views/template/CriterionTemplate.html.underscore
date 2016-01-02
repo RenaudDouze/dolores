@@ -2,11 +2,11 @@
 
 <span class="criterion" contenteditable="true"><%= label %></span>
 
-<span class="btn btn-danger btn-xs pull-right action-remove action-remove-criterion" title="Virer">
+<span class="btn btn-danger btn-xs pull-right action-remove action-remove-criterion hidden-print" title="Virer">
  	<span class="glyphicon glyphicon-remove-circle"></span>
 </span>
 <span title="Trier"
-    class="btn <%= ((activeOrder) ? 'btn-info active sort-' + activeOrder : 'btn-default') %> btn-xs pull-right action-sort action-sort-criterion" 
+    class="btn <%= ((activeOrder) ? 'btn-info active sort-' + activeOrder : 'btn-default') %> btn-xs pull-right action-sort action-sort-criterion hidden-print"
 >
     <span class="glyphicon glyphicon-sort-by-order"></span>
     <span class="glyphicon glyphicon-sort-by-order-alt"></span>

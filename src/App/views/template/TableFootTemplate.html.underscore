@@ -1,5 +1,5 @@
-<script type="text/template" id="table_foot_template">   
-<tr>
+<script type="text/template" id="table_foot_template">
+<tr class="hidden-print">
     <th>
         <span class="btn btn-info btn-xs pull-right action-add action-add-criterion">
             <span class="glyphicon glyphicon-plus"></span> Ajouter
@@ -13,8 +13,6 @@
         <button type="button" class="btn btn-default btn-xs action-import action-import-table">
             <span class="glyphicon glyphicon-import"></span> Charger
         </button>
-
-        <span class="reload">Reload</span>
     </td>
 </tr>
 </script>
