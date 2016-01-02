@@ -9,7 +9,24 @@
 				<h4 class="modal-title">Export</h4>
 			</div>
 			<div class="modal-body">
-				<textarea class="form-control" rows="3"><%= data %></textarea>
+				<div class="alerts"></div>
+
+				<ul class="nav nav-tabs">
+				  	<li role="presentation" class="active">
+				  		<a href="#export-json" role="tab" data-toggle="tab">JSON</a>
+				  	</li>
+				  	<li role="presentation">
+				  		<a href="#export-csv" role="tab" data-toggle="tab">CSV</a>
+				  	</li>
+				</ul>
+				<div class="tab-content">
+					<div id="export-json" class="tab-pane active">
+						<textarea class="form-control" rows="3"><%= data %></textarea>
+					</div>
+					<div id="export-csv" class="tab-pane">
+						<textarea class="form-control" rows="3"><%= dataCsv %></textarea>
+					</div>
+				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -18,32 +18,7 @@ var TableView = ParentView.extend({
 		Initialize
 	**/
 	initialize: function() {
-	    var Truc = new ThingModel({'label': 'Truc', order: 1, defaultOrder: 1});
-	    var Machin = new ThingModel({'label': 'Machin', order: 2, defaultOrder: 2});
-	    var Chose = new ThingModel({'label': 'Chose', order: 3, defaultOrder: 3});
-
-	    var Critere1 = new CriterionModel({'label': 'Crit. A', order: 1, defaultOrder: 1});
-	    var Critere2 = new CriterionModel({'label': 'Crit. B', order: 2, defaultOrder: 2});
-	    var Critere3 = new CriterionModel({'label': 'Crit. C', order: 3, defaultOrder: 3});
-
-	    var ValueTruc1 = new ValueModel({'data': 'Truc-1', 'thing': Truc, 'criterion': Critere1});
-	    var ValueTruc2 = new ValueModel({'data': 'Truc-2', 'thing': Truc, 'criterion': Critere2});
-	    var ValueTruc3 = new ValueModel({'data': 'Truc-3', 'thing': Truc, 'criterion': Critere3});
-
-	    var ValueMachin1 = new ValueModel({'data': 'Machin-1', 'thing': Machin, 'criterion': Critere1});
-	    var ValueMachin2 = new ValueModel({'data': 'Machin-2', 'thing': Machin, 'criterion': Critere2});
-	    var ValueMachin3 = new ValueModel({'data': 'Machin-3', 'thing': Machin, 'criterion': Critere3});
-
-	    var ValueChose1 = new ValueModel({'data': 'Chose-1', 'thing': Chose, 'criterion': Critere1});
-	    var ValueChose2 = new ValueModel({'data': 'Chose-2', 'thing': Chose, 'criterion': Critere2});
-	    var ValueChose3 = new ValueModel({'data': 'Chose-3', 'thing': Chose, 'criterion': Critere3});
-
-	    things = new ThingCollection;
-        things.add([Truc, Machin, Chose]);
-        criterions.add([Critere1, Critere2, Critere3]);
-
-	    cValue = new ValueCollection;
-        cValue.add([ValueTruc1, ValueMachin1, ValueChose1, ValueTruc2, ValueMachin2, ValueChose2, ValueTruc3, ValueMachin3, ValueChose3]);
+        this.initializeData();
 
 		save = new SaveModel();
 		this.importView = new ImportView({
@@ -70,6 +45,38 @@ var TableView = ParentView.extend({
 
         this.loaderStop();
 	},
+
+    /**
+     * Initialize data
+     */
+    initializeData: function () {
+        var Truc = new ThingModel({'label': 'Truc', order: 1, defaultOrder: 1});
+        var Machin = new ThingModel({'label': 'Machin', order: 2, defaultOrder: 2});
+        var Chose = new ThingModel({'label': 'Chose', order: 3, defaultOrder: 3});
+
+        var Critere1 = new CriterionModel({'label': 'Crit. A', order: 1, defaultOrder: 1});
+        var Critere2 = new CriterionModel({'label': 'Crit. B', order: 2, defaultOrder: 2});
+        var Critere3 = new CriterionModel({'label': 'Crit. C', order: 3, defaultOrder: 3});
+
+        var ValueTruc1 = new ValueModel({'data': 'Truc-1', 'thing': Truc, 'criterion': Critere1});
+        var ValueTruc2 = new ValueModel({'data': 'Truc-2', 'thing': Truc, 'criterion': Critere2});
+        var ValueTruc3 = new ValueModel({'data': 'Truc-3', 'thing': Truc, 'criterion': Critere3});
+
+        var ValueMachin1 = new ValueModel({'data': 'Machin-1', 'thing': Machin, 'criterion': Critere1});
+        var ValueMachin2 = new ValueModel({'data': 'Machin-2', 'thing': Machin, 'criterion': Critere2});
+        var ValueMachin3 = new ValueModel({'data': 'Machin-3', 'thing': Machin, 'criterion': Critere3});
+
+        var ValueChose1 = new ValueModel({'data': 'Chose-1', 'thing': Chose, 'criterion': Critere1});
+        var ValueChose2 = new ValueModel({'data': 'Chose-2', 'thing': Chose, 'criterion': Critere2});
+        var ValueChose3 = new ValueModel({'data': 'Chose-3', 'thing': Chose, 'criterion': Critere3});
+
+        things = new ThingCollection;
+        things.add([Truc, Machin, Chose]);
+        criterions.add([Critere1, Critere2, Critere3]);
+
+        cValue = new ValueCollection;
+        cValue.add([ValueTruc1, ValueMachin1, ValueChose1, ValueTruc2, ValueMachin2, ValueChose2, ValueTruc3, ValueMachin3, ValueChose3]);
+    },
 
     /**
         Render
@@ -200,12 +207,8 @@ var TableView = ParentView.extend({
 		Open the export page
 	**/
 	openExportPage: function() {
-        var data = _.extend(
-            {title: tableTitle},
-            {values: cValue}
-        );
-
-		save.set('data', JSON.stringify(data));
+        save.initJson();
+		save.initCsv();
 
 		this.exportView.open();
 	},
@@ -214,8 +217,6 @@ var TableView = ParentView.extend({
 		Open the import page
 	**/
 	openImportPage: function() {
-		save.set('data', JSON.stringify(cValue));
-
 		this.importView.open();
 	},
 
