@@ -153,7 +153,6 @@ var TableView = ParentView.extend({
         Create a new critetion
     **/
     createCriterion: function() {
-        console.log('TableView createCriterion');
         var newCriterion = new CriterionModel();
         criterions.add([newCriterion]);
     },
@@ -162,7 +161,6 @@ var TableView = ParentView.extend({
 		Add a criterion
 	**/
 	addCriterion: function(newCriterion) {
-        console.log('TableView addCriterion');
     	this.tBodyView.addCriterion(newCriterion);
 
         for (var i = 0; i < things.length; i++) {

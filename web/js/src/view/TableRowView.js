@@ -38,7 +38,6 @@ var TableRowView = ParentView.extend({
         Add a criterion
     **/
     addCriterion: function(criterion) {
-        console.log('TableRowView addCriterion');
         var view = new CriterionView({
             model: criterion,
         });
