@@ -69,7 +69,7 @@ var ValueCollection = Backbone.Collection.extend({
 
 			if (model instanceof ThingModel) {
 				modelName = 'criterion';
-			} else if (sort.model instanceof CriterionModel) {
+			} else if (model instanceof CriterionModel) {
 				modelName = 'thing';
 			}
 
