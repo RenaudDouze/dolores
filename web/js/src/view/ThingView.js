@@ -8,7 +8,7 @@ var ThingView = CellSortableView.extend({
         Class name
     **/
     className: 'thing',
-	
+
 	/**
 		Template selector
 	**/
@@ -35,15 +35,14 @@ var ThingView = CellSortableView.extend({
         Remove a thing
     **/
     removeThing: function(e) {
-        console.log(this.modelKey);
-        // tableView.removeThing(this.model);
+        tableView.removeThing(this.model);
     },
 
     /**
         Sort by thing
     **/
     sortByThing: function(e) {
-        var filter = {thing: this.model}; 
+        var filter = {thing: this.model};
         this.sortBy(filter);
     },
 });

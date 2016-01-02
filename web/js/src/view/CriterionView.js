@@ -35,15 +35,14 @@ var CriterionView = CellSortableView.extend({
 		Remove a criterion
 	**/
 	removeCriterion: function(e) {
-        console.log(this.modelKey);
-		// tableView.removeCriterion(this.model);
+        tableView.removeCriterion(this.model);
 	},
 
     /**
         Sort by criterion
     **/
     sortByCriterion: function(e) {
-        var filter = {criterion: this.model}; 
+        var filter = {criterion: this.model};
         this.sortBy(filter);
     },
 });

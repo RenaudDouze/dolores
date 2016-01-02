@@ -147,6 +147,8 @@ var TableView = ParentView.extend({
 	removeThing: function(thing) {
         // Remove the thing
 		things.remove(thing);
+
+        cValue.remove(cValue.where({thing: thing}));
 	},
 
     /**
@@ -180,6 +182,8 @@ var TableView = ParentView.extend({
 	removeCriterion: function(criterion) {
         // Remove the thing
         criterions.remove(criterion);
+
+        cValue.remove(cValue.where({criterion: criterion}));
 	},
 
 	/**
