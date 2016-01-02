@@ -101,7 +101,7 @@ var ValueCollection = Backbone.Collection.extend({
 	/**
 		Load datas
 	**/
-	load: function(datas) {
+	loadJson: function(datas) {
 		var newValues = new Array();
 		var errors = new Array();
 
@@ -140,11 +140,102 @@ var ValueCollection = Backbone.Collection.extend({
 			}
 		});
 
-		cValue.reset(newValues);
-		cValue.sort();
-
 		if (! _.isEmpty(errors)) {
 			throw new DoloresJsonNotCompatibleException(errors);
 		}
+
+		cValue.reset(newValues);
+		cValue.sort();
 	},
+
+	/**
+	 * Load csv
+	 *
+	 * @param {string} text
+	 */
+	loadCsv: function(text) {
+		var errors = new Array();
+
+        if (-1 === text.indexOf(';')) {
+            errors.push('Il faut des point-virgule pour faire un bon csv');
+        }
+        if (-1 === text.indexOf('\n')) {
+            errors.push('Il faut au moins deux lignes (titre;colonnes et ligne;valeurs)');
+        }
+
+		if (_.isEmpty(errors)) {
+	        var rowsStr = text.split('\n');
+
+	        if (2 > rowsStr.length) {
+            	errors.push('Il faut au moins deux lignes (titre;colonnes et ligne;valeurs)');
+	        }
+
+	        var rows = [];
+	        _.each(rowsStr, function(rowStr, index) {
+	        	var row = rowStr.split(';');
+
+	        	if (index && row.length !== _.first(rows).length) {
+            		errors.push("Il faut le même nombre d'éléments dans chaque ligne");
+	        	}
+
+	            rows.push(row);
+	        });
+
+	        // Don't need title here
+	        rows[0].shift()
+
+	        things.reset(null, {silent: true});
+	        criterions.reset(null, {silent: true});
+
+	        _.each(rows[0], function(thingLabel, index) {
+	            things.add(new ThingModel({
+	            	'label': thingLabel,
+	            }), {silent: true});
+	        });
+	        // No need header anymore
+	        rows.shift();
+
+	        _.each(rows, function(row, index) {
+	            criterions.add(new CriterionModel({
+	            	'label': row[0],
+	            }), {silent: true});
+
+	            // No need first value anymore
+	            row.shift();
+	        });
+
+	        var values = [];
+	        // For each rows, which only contains values now
+	        _.each(rows, function(row, iRow) {
+	            _.each(row, function(value, iColumn) {
+	            	var thing = things.at(iColumn);
+	            	var criterion = criterions.at(iRow);
+
+	            	if ('undefined' === typeof thing) {
+            			errors.push("Le \"truc\" n'a pas été trouvé");
+	            	}
+	            	if ('undefined' === typeof criterion) {
+            			errors.push("Le \"critère\" n'a pas été trouvé");
+	            	}
+
+	            	if ('undefined' !== typeof thing && 'undefined' !== typeof criterion) {
+		                values.push(new ValueModel({
+		                    'data': value,
+		                    'thing': thing,
+		                    'criterion': criterion
+		                }));
+		            }
+	            });
+	        });
+
+			if (! _.isEmpty(errors)) {
+				throw new DoloresCsvNotCompatibleException(errors);
+			}
+
+	        cValue.reset(values);
+	        cValue.sort();
+	    } else {
+			throw new DoloresCsvNotCompatibleException(errors);
+		}
+	}
 });
