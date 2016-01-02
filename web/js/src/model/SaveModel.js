@@ -1,4 +1,4 @@
-var SaveModel = Backbone.RelationalModel.extend({
+var SaveModel = Backbone.Model.extend({
 
     // string JSON formatted data
     data: '',

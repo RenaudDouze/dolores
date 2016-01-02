@@ -145,10 +145,21 @@ var TableView = ParentView.extend({
 		Remove a thing
 	**/
 	removeThing: function(thing) {
-        // Remove the thing
-		things.remove(thing);
+        confirm.set('title', "T'es sûr de vouloir enlever ce truc ?");
+        confirm.set('text', "Si t'enlève ce truc \"" + thing.get('label') + "\", tu perds toutes les données de la colonne");
+        confirm.set('actionLabel', "Enlève j'te dis !");
+        confirm.set('cancelLabel', "Nan nan, je voulais pas faire ça");
+        confirm.set('alertClass', 'danger');
 
-        cValue.remove(cValue.where({thing: thing}));
+        var callback = _.bind(function() {
+            // Remove the thing
+            things.remove(thing);
+
+            cValue.remove(cValue.where({thing: thing}));
+        }, this);
+        confirm.set('actionCallback', callback);
+
+        confirmView.open();
 	},
 
     /**
@@ -180,10 +191,21 @@ var TableView = ParentView.extend({
 		Remove a criterion
 	**/
 	removeCriterion: function(criterion) {
-        // Remove the thing
-        criterions.remove(criterion);
+        confirm.set('title', "T'es sûr de vouloir enlever ce critère ?");
+        confirm.set('text', "Si t'enlève ce critère \"" + criterion.get('label') + "\", tu perds toutes les données de la ligne");
+        confirm.set('actionLabel', "Enlève j'te dis !");
+        confirm.set('cancelLabel', "Nan nan, je voulais pas faire ça");
+        confirm.set('alertClass', 'danger');
 
-        cValue.remove(cValue.where({criterion: criterion}));
+        var callback = _.bind(function() {
+            // Remove the thing
+            criterions.remove(criterion);
+
+            cValue.remove(cValue.where({criterion: criterion}));
+        }, this);
+        confirm.set('actionCallback', callback);
+
+        confirmView.open();
 	},
 
 	/**

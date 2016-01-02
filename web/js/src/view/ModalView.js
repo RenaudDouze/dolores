@@ -65,6 +65,6 @@ var ModalView = ParentView.extend({
 		Close the modal
 	**/
 	close: function() {
-    	this.modal('close');
+    	this.modal('hide');
 	},
 });

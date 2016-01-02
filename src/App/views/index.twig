@@ -11,7 +11,8 @@
 	<section id="main">
 		<div id="tableContent"></div>
 		<div id="export"></div>
-		<div id="import"></div>
+        <div id="import"></div>
+		<div id="confirm"></div>
 	</section>
 
 	<footer>
@@ -49,6 +50,7 @@
     <script src="{{ app.request.basePath }}/js/src/model/ValueModel.js"></script>
 
     <script src="{{ app.request.basePath }}/js/src/model/SaveModel.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/model/ConfirmModel.js"></script>
 
     <script src="{{ app.request.basePath }}/js/src/model/TitleModel.js"></script>
     <script src="{{ app.request.basePath }}/js/src/model/TableModel.js"></script>
@@ -68,6 +70,7 @@
 
     {% include('template/ExportTemplate.html.underscore') %}
     {% include('template/ImportTemplate.html.underscore') %}
+    {% include('template/ConfirmTemplate.html.underscore') %}
 
     {% include('template/TitleTemplate.html.underscore') %}
     {% include('template/TableRowTemplate.html.underscore') %}
@@ -91,6 +94,7 @@
     <script src="{{ app.request.basePath }}/js/src/view/ModalView.js"></script>
     <script src="{{ app.request.basePath }}/js/src/view/ExportView.js"></script>
     <script src="{{ app.request.basePath }}/js/src/view/ImportView.js"></script>
+    <script src="{{ app.request.basePath }}/js/src/view/ConfirmView.js"></script>
 
     <script src="{{ app.request.basePath }}/js/src/view/TitleView.js"></script>
     <script src="{{ app.request.basePath }}/js/src/view/TableRowView.js"></script>
@@ -103,7 +107,7 @@
 
     <!-- Execution -->
     <script type="text/javascript">
-    	var app, table, tableView, tableTitle, save, things, criterions, cValue = null;
+    	var app, table, tableView, tableTitle, save, confirm, confirmView, things, criterions, cValue = null;
         var sortModel = sortOrder = null;
         var sorting = {};
 

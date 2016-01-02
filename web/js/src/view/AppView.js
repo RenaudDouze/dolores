@@ -4,7 +4,13 @@ var AppView = ParentView.extend({
 
 	initialize: function () {
 		table = new TableModel();
-		tableView = new TableView({model: table});
+        tableView = new TableView({model: table});
+
+        confirm = new ConfirmModel();
+        confirmView = new ConfirmView({
+            model: confirm,
+            el: '#confirm',
+        });
 	},
 
     /**
