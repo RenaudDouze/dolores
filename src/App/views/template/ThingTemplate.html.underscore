@@ -1,15 +1,17 @@
 <script type="text/template" id="thing_template">
 
-<span class="thing" contenteditable="true"><%= label %></span>
+<span class="thing-label" contenteditable="true"><%= label %></span>
 
-<span class="btn btn-danger btn-xs pull-right action-remove action-remove-thing hidden-print" title="Virer">
- 	<span class="glyphicon glyphicon-remove-circle"></span>
-</span>
-<span title="Trier"
-    class="btn <%= ((activeOrder) ? 'btn-info active sort-' + activeOrder : 'btn-default') %> btn-xs pull-right action-sort action-sort-thing hidden-print"
->
-    <span class="glyphicon glyphicon-sort-by-order"></span>
-    <span class="glyphicon glyphicon-sort-by-order-alt"></span>
-</span>
+<div class="btn-group pull-right" role="group" aria-label="Actions">
+  <span title="Trier"
+      class="btn btn-sm btn-secondary <%= ((activeOrder) ? 'text-primary active sort-' + activeOrder : 'text-muted') %> action-sort action-sort-thing hidden-print"
+  >
+      <i class="fa fa-sort-amount-asc action-sort-icon-asc" aria-hidden="true"></i>
+      <i class="fa fa-sort-amount-desc action-sort-icon-desc" aria-hidden="true"></i>
+  </span>
+    <span class="btn btn-secondary btn-sm text-danger action-remove action-remove-thing hidden-print" title="Virer">
+     	<i class="fa fa-minus-circle" aria-hidden="true"></i>
+    </span>
+</div>
 
 </script>

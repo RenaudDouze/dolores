@@ -29,6 +29,8 @@ var AppView = ParentView.extend({
         $('.visible-print').show();
         $('.action-unprint').show();
         $('.action-print').hide();
+
+		$('#tableContent').toggleClass('mode-print');
     },
 
     /**

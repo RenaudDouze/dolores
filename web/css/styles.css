@@ -12,13 +12,28 @@ td:hover .action-remove {
     opacity: 1;
 }
 
-.action-sort .glyphicon-sort-by-order,
-.action-sort.sort-asc .glyphicon-sort-by-order,
-.action-sort.sort-desc .glyphicon-sort-by-order-alt {
+.action-sort .action-sort-icon-asc,
+.action-sort.sort-asc .action-sort-icon-asc,
+.action-sort.sort-desc .action-sort-icon-desc {
     display: inline-block;
 }
-.action-sort .glyphicon-sort-by-order-alt,
-.action-sort.sort-desc .glyphicon-sort-by-order,
-.action-sort.sort-asc .glyphicon-sort-by-order-alt {
+.action-sort .action-sort-icon-desc,
+.action-sort.sort-asc .action-sort-icon-desc,
+.action-sort.sort-desc .action-sort-icon-asc {
     display: none;
+}
+
+[contenteditable="true"] {
+    border: dashed 1px lightgray;
+    display: inline-block;
+    width: 100%;
+}
+
+.thing-label[contenteditable="true"],
+.criterion-label[contenteditable="true"] {
+    width: 60%;
+}
+
+.mode-print [contenteditable="true"] {
+    border: none;
 }
