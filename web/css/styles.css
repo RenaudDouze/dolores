@@ -38,6 +38,7 @@ th.criterion {
     border: dashed 1px lightgray;
     display: inline-block;
     width: 100%;
+    min-height: 24px;
 }
 
 .mode-raw [contenteditable="true"] {
