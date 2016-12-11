@@ -172,13 +172,15 @@ var ValueCollection = Backbone.Collection.extend({
 
 	        var rows = [];
 	        _.each(rowsStr, function(rowStr, index) {
-	        	var row = rowStr.split(';');
+						if (0 !== rowStr.trim().length) {
+		        	var row = rowStr.split(';');
 
-	        	if (index && row.length !== _.first(rows).length) {
-            		errors.push("Il faut le même nombre d'éléments dans chaque ligne");
-	        	}
+		        	if (index && row.length !== _.first(rows).length) {
+	            		errors.push("Il faut le même nombre d'éléments dans chaque ligne");
+		        	}
 
 	            rows.push(row);
+						}
 	        });
 
 	        // Don't need title here
