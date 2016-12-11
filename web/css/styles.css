@@ -40,6 +40,11 @@ th.criterion {
     width: 100%;
 }
 
+.mode-raw [contenteditable="true"] {
+  font-family: Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  border-color: gray;
+}
+
 .thing .actions-group,
 .criterion .actions-group {
   position: absolute;

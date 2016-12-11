@@ -2,6 +2,8 @@ var AppView = ParentView.extend({
 
     el: $("#app"),
 
+    rawMode: false,
+
     initialize: function() {
         table = new TableModel();
         tableView = new TableView({
@@ -21,6 +23,8 @@ var AppView = ParentView.extend({
     events: {
         "click .action-print": "printVersion",
         "click .action-unprint": "unprintVersion",
+        "click .action-html-show": "rawVersion",
+        "click .action-html-hide": "htmlVersion",
     },
 
     /**
@@ -32,7 +36,7 @@ var AppView = ParentView.extend({
         $('.action-unprint').show();
         $('.action-print').hide();
 
-        $('#tableContent').toggleClass('mode-print');
+        $('#tableContent').addClass('mode-print');
     },
 
     /**
@@ -43,5 +47,31 @@ var AppView = ParentView.extend({
         $('.visible-print').hide();
         $('.action-unprint').hide();
         $('.action-print').show();
+
+        $('#tableContent').removeClass('mode-print');
+    },
+
+    /**
+     * Version brut (code html visible)
+     */
+    rawVersion: function() {
+        table.set('rawMode', true);
+
+        $('.action-html-show').hide();
+        $('.action-html-hide').show();
+
+        $('#tableContent').addClass('mode-raw');
+    },
+
+    /**
+     * Version html (code html interprété)
+     */
+    htmlVersion: function() {
+        table.set('rawMode', false);
+
+        $('.action-html-show').show();
+        $('.action-html-hide').hide();
+
+        $('#tableContent').removeClass('mode-raw');
     },
 });

@@ -3,31 +3,38 @@
 
 {% block content %}
 
-<div id="app" class="container">
-	<header>
-		<h1>Dolores</h1>
-	</header>
+    <div id="app" class="container">
+        <header>
+            <h1>Dolores</h1>
+        </header>
 
-	<section id="main">
-		<div id="tableContent"></div>
-		<div id="export"></div>
-        <div id="import"></div>
-		<div id="confirm"></div>
-	</section>
+        <section id="main">
+            <div id="tableContent"></div>
+            <div id="export"></div>
+            <div id="import"></div>
+            <div id="confirm"></div>
+        </section>
 
-	<footer>
-        <p>
-            <a href="#" class="action-print">Version imprimable</a>
-            <a href="#" class="action-unprint" style="display: none;">Version éditable</a>
-        </p>
-        <p>
-            Ceci est un comparateur, pour comparer quoique tu veux
-        </p>
-    </footer>
-</div>
+        <footer>
+            <p>
+                <ul>
+                    <li>
+                        <a href="#" class="action-print">Version imprimable</a>
+                        <a href="#" class="action-unprint" style="display: none;">Version éditable</a>
+                    </li>
+                    <li>
+                        <a href="#" class="action-html-show">Voir le contenu brut</a>
+                        <a href="#" class="action-html-hide" style="display: none;">Cacher le contenu brut</a>
+                    </li>
+                </ul>
+            </p>
+            <p>
+                Ceci est un comparateur, pour comparer quoique tu veux
+            </p>
+        </footer>
+    </div>
 
 {% endblock %}
-
 
 {% block closing_scripts %}
     <!-- Lib -->
@@ -55,12 +62,12 @@
     <script src="{{ app.request.basePath }}/js/src/model/TitleModel.js"></script>
     <script src="{{ app.request.basePath }}/js/src/model/TableModel.js"></script>
 
-	<!-- Collections -->
+    <!-- Collections -->
     <script src="{{ app.request.basePath }}/js/src/collection/ThingCollection.js"></script>
     <script src="{{ app.request.basePath }}/js/src/collection/CriterionCollection.js"></script>
     <script src="{{ app.request.basePath }}/js/src/collection/ValueCollection.js"></script>
 
-	<!-- Templates -->
+    <!-- Templates -->
     {% include('template/AlertTemplate.html.underscore') %}
     {% include('template/ListTemplate.html.underscore') %}
 
@@ -79,7 +86,7 @@
     {% include('template/TableBodyTemplate.html.underscore') %}
     {% include('template/TableTemplate.html.underscore') %}
 
-	<!-- Views -->
+    <!-- Views -->
     <script src="{{ app.request.basePath }}/js/src/view/ParentView.js"></script>
 
     <script src="{{ app.request.basePath }}/js/src/view/AlertView.js"></script>
@@ -107,20 +114,29 @@
 
     <!-- Execution -->
     <script type="text/javascript">
-    	var app, table, tableView, tableTitle, save, confirm, confirmView, things, criterions, cValue = null;
+        var app,
+            table,
+            tableView,
+            tableTitle,
+            save,
+            confirm,
+            confirmView,
+            things,
+            criterions,
+            cValue = null;
         var sortModel = sortOrder = null;
         var sorting = {};
 
-	    function main () {
-	    	things = new ThingCollection();
-	    	criterions = new CriterionCollection();
-	    	values = new ValueCollection();
+        function main() {
+            things = new ThingCollection();
+            criterions = new CriterionCollection();
+            values = new ValueCollection();
 
-	    	app = new AppView();
-	    }
+            app = new AppView();
+        }
 
-	    $(document).ready(function() {
-	    	main();
-		});
+        $(document).ready(function() {
+            main();
+        });
     </script>
 {% endblock %}

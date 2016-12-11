@@ -23,6 +23,8 @@ var CellView = Backbone.View.extend({
     initialize: function() {
         this.listenTo(this.model, 'remove', this.remove);
         this.listenTo(this.model, 'destroy', this.remove);
+
+        this.listenTo(table, 'change:rawMode', this.render);
     },
 
     /**
@@ -30,7 +32,10 @@ var CellView = Backbone.View.extend({
     **/
     render: function() {
         var tpl = this.template();
-        this.$el.html(tpl(this.model.toJSON()));
+
+        let data = _.extend(this.model.toJSON(), {isRawMode: table.get('rawMode')});
+
+        this.$el.html(tpl(data));
 
         return this;
     },
@@ -40,8 +45,8 @@ var CellView = Backbone.View.extend({
     **/
     events: {
         "click": "focus",
-        "DOMNodeInserted [contenteditable='true']": "contentEdited",
-        "DOMNodeRemoved [contenteditable='true']": "contentEdited",
+        // "DOMNodeInserted [contenteditable='true']": "contentEdited",
+        // "DOMNodeRemoved [contenteditable='true']": "contentEdited",
         "DOMCharacterDataModified [contenteditable='true']": "contentEdited",
     },
 

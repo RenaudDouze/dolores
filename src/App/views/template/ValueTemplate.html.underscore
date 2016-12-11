@@ -1,5 +1,9 @@
 <script type="text/template" id="value_template">
-<span  contenteditable="true">
+<span contenteditable="true">
+	<% if (isRawMode) { %>
+	<%- data %>
+	<% } else { %>
 	<%= data %>
+	<% } %>
 </span>
 </script>
