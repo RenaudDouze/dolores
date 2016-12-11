@@ -21,8 +21,8 @@ var ConfirmView = ModalView.extend({
         if ('function' === typeof this.model.get('actionCallback')) {
             this.model.get('actionCallback')();
 
-            this.reset();
             this.close();
+            this.reset();
         }
     },
 
@@ -30,6 +30,6 @@ var ConfirmView = ModalView.extend({
      * Reset modal
      */
     reset: function() {
-        this.model = new ConfirmModel;
+        this.model.clear().set(this.model.defaults);
     }
 });
