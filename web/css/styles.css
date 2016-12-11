@@ -4,12 +4,23 @@ body {
 }
 
 th .action-remove,
-td .action-remove {
+td .action-remove,
+th .action-sort,
+td .action-sort {
     opacity: 0.1;
 }
 th:hover .action-remove,
-td:hover .action-remove {
+td:hover .action-remove,
+th:hover .action-sort,
+td:hover .action-sort,
+th .action-sort.active,
+td .action-sort.active {
     opacity: 1;
+}
+
+th.thing,
+th.criterion {
+  position: relative;
 }
 
 .action-sort .action-sort-icon-asc,
@@ -29,9 +40,15 @@ td:hover .action-remove {
     width: 100%;
 }
 
-.thing-label[contenteditable="true"],
-.criterion-label[contenteditable="true"] {
-    width: 60%;
+.thing .actions-group,
+.criterion .actions-group {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.thing-label {
+  margin-top: 0.25rem;
 }
 
 .mode-print [contenteditable="true"] {

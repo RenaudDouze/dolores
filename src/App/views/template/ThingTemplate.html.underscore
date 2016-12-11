@@ -2,14 +2,14 @@
 
 <span class="thing-label" contenteditable="true"><%= label %></span>
 
-<div class="btn-group pull-right" role="group" aria-label="Actions">
+<div class="actions-group actions-group-thing" role="group" aria-label="Actions">
   <span title="Trier"
-      class="btn btn-sm btn-secondary <%= ((activeOrder) ? 'text-primary active sort-' + activeOrder : 'text-muted') %> action-sort action-sort-thing hidden-print"
+      class="btn btn-sm btn-link <%= ((activeOrder) ? 'text-primary active sort-' + activeOrder : 'text-muted') %> action-sort action-sort-thing hidden-print"
   >
       <i class="fa fa-sort-amount-asc action-sort-icon-asc" aria-hidden="true"></i>
       <i class="fa fa-sort-amount-desc action-sort-icon-desc" aria-hidden="true"></i>
   </span>
-    <span class="btn btn-secondary btn-sm text-danger action-remove action-remove-thing hidden-print" title="Virer">
+    <span class="btn btn-link btn-sm text-danger action-remove action-remove-thing hidden-print" title="Virer">
      	<i class="fa fa-minus-circle" aria-hidden="true"></i>
     </span>
 </div>
