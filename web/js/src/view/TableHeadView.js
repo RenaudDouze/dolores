@@ -31,7 +31,7 @@ var TableHeadView = ParentView.extend({
     render: function() {
         var tpl = this.template();
         this.$el.html(tpl());
-        
+
         return this;
     },
 
@@ -53,5 +53,5 @@ var TableHeadView = ParentView.extend({
         this.$('th:last').before(view.render().el);
 
         view.focus();
-    } 
-});   
+    }
+});

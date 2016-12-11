@@ -1,3 +1,3 @@
 var DoloresJsonNotCompatibleException = function(errors) {
-	this.errors = errors;
+    this.errors = errors;
 };

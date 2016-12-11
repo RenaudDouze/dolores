@@ -1,11 +1,11 @@
 var ExportView = ModalView.extend({
 
-	tagName: 'body',
+    tagName: 'body',
 
-	/**
-		Template selector
-	**/
-	templateSelector: '#export_template',
+    /**
+    	Template selector
+    **/
+    templateSelector: '#export_template',
 
     /**
         Events

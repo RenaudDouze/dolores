@@ -9,26 +9,26 @@ var ThingView = CellSortableView.extend({
     **/
     className: 'thing',
 
-	/**
-		Template selector
-	**/
-	templateSelector: '#thing_template',
+    /**
+    	Template selector
+    **/
+    templateSelector: '#thing_template',
 
     /**
         Field name in ValueModel
     **/
     fieldName: 'thing',
 
-	/**
-		Events
-	**/
-    events: function () {
-    	var events = CellSortableView.prototype.events;
+    /**
+    	Events
+    **/
+    events: function() {
+        var events = CellSortableView.prototype.events;
 
-    	return _.extend(events, {
+        return _.extend(events, {
             "click .action-remove.btn": "removeThing",
-        	"click .action-sort.btn": "sortByThing",
-  	  	});
+            "click .action-sort.btn": "sortByThing",
+        });
     },
 
     /**
@@ -42,7 +42,9 @@ var ThingView = CellSortableView.extend({
         Sort by thing
     **/
     sortByThing: function(e) {
-        var filter = {thing: this.model};
+        var filter = {
+            thing: this.model
+        };
         this.sortBy(filter);
     },
 });

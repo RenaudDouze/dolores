@@ -1,7 +1,7 @@
 var ThingModel = CellModel.extend({
 
-	// string Label
-	label: '',
+    // string Label
+    label: '',
 
     // integer Order
     order: 0,

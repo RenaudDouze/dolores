@@ -52,8 +52,8 @@ var TableBodyView = ParentView.extend({
     addValue: function(value) {
         var criterionCId = value.get('criterion').cid;
 
-        if (! _.isUndefined(this.rowViews[criterionCId])
-            && !_.isNull(this.rowViews[criterionCId])
+        if (!_.isUndefined(this.rowViews[criterionCId]) &&
+            !_.isNull(this.rowViews[criterionCId])
         ) {
             this.rowViews[criterionCId].addValue(value);
         }

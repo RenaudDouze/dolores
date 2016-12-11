@@ -1,30 +1,30 @@
 var AlertView = Backbone.View.extend({
 
-	tagName: 'div',
+    tagName: 'div',
 
-	/**
-		Template
-	**/
+    /**
+    	Template
+    **/
     template: function() {
-    	return _.template($('#alert_template').html());
+        return _.template($('#alert_template').html());
     },
 
-	/**
-		Initialize
-	**/
-	initialize: function() {
-		this.listenTo(this.model, 'change', this.render);
-	},
+    /**
+    	Initialize
+    **/
+    initialize: function() {
+        this.listenTo(this.model, 'change', this.render);
+    },
 
-	/**
-		Render
-	**/
-	render: function() {
-		var tpl = this.template();
-		this.$el.html(tpl(this.model.toJSON()));
+    /**
+    	Render
+    **/
+    render: function() {
+        var tpl = this.template();
+        this.$el.html(tpl(this.model.toJSON()));
 
-		this.model.clean();
+        this.model.clean();
 
-      	return this;
-	},
+        return this;
+    },
 });

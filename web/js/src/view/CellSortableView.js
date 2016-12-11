@@ -20,21 +20,21 @@ var CellSortableView = CellView.extend({
 
         var tpl = this.template();
         this.$el.html(tpl(datas));
-        
+
         return this;
     },
 
     /**
         Sort by. Filter is used to find values
     **/
-    sortBy: function (filter) {
+    sortBy: function(filter) {
         var order = this.getNextOrder();
 
         // var datas = cValue.where(filter);
-        
+
         // cValue.sorting.add(this.fieldName, this.model, order);
         //*
-        if (! _.isNull(order)) {
+        if (!_.isNull(order)) {
             cValue.sorting.add(this.fieldName, this.model, order);
         } else {
             cValue.sorting.delete(this.model);

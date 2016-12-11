@@ -1,3 +1,3 @@
 var DoloresCsvNotCompatibleException = function(errors) {
-	this.errors = errors;
+    this.errors = errors;
 };

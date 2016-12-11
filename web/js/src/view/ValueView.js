@@ -1,8 +1,8 @@
 var ValueView = CellView.extend({
-	/**
-		Template selector
-	**/
-	templateSelector: '#value_template',
+    /**
+    	Template selector
+    **/
+    templateSelector: '#value_template',
 
     /**
         Initialize

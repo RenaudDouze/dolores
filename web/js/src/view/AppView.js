@@ -1,17 +1,19 @@
 var AppView = ParentView.extend({
 
-	el: $("#app"),
+    el: $("#app"),
 
-	initialize: function () {
-		table = new TableModel();
-        tableView = new TableView({model: table});
+    initialize: function() {
+        table = new TableModel();
+        tableView = new TableView({
+            model: table
+        });
 
         confirm = new ConfirmModel();
         confirmView = new ConfirmView({
             model: confirm,
             el: '#confirm',
         });
-	},
+    },
 
     /**
         Events
@@ -30,7 +32,7 @@ var AppView = ParentView.extend({
         $('.action-unprint').show();
         $('.action-print').hide();
 
-		$('#tableContent').toggleClass('mode-print');
+        $('#tableContent').toggleClass('mode-print');
     },
 
     /**

@@ -31,7 +31,7 @@ var TableFootView = ParentView.extend({
     render: function() {
         var tpl = this.template();
         this.$el.html(tpl());
-        
+
         return this;
     },
 
@@ -41,4 +41,4 @@ var TableFootView = ParentView.extend({
     update: function() {
         return this.render();
     },
-});   
+});

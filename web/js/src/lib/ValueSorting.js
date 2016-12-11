@@ -35,7 +35,7 @@ var ValueSorting = {
         Return sorting data for a model, if given
     **/
     get: function(model) {
-        if (! _.isUndefined(model)) {
+        if (!_.isUndefined(model)) {
             return this.data[model.cid];
         }
         return this.data;
@@ -67,11 +67,11 @@ var ValueSorting = {
         // Only support one sort at the time
         this.clean();
 
-        if (! this.has(model)) {
+        if (!this.has(model)) {
             this.fields.push(field);
             this.models.push(model);
         }
-        
+
         this.data[key] = {
             model: model,
             field: field,
@@ -97,14 +97,14 @@ var ValueSorting = {
 
     /**
         Return all fields
-    **/ 
+    **/
     getFields: function() {
         return this.fields;
     },
 
     /**
         Return all models
-    **/ 
+    **/
     getModels: function() {
         return this.models;
     },
@@ -113,7 +113,7 @@ var ValueSorting = {
         The sorting has model or not
     **/
     has: function(model) {
-        return (! _.isUndefined(this.data[model.cid]));
+        return (!_.isUndefined(this.data[model.cid]));
     },
 
     /**

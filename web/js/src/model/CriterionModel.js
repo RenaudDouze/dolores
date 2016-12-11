@@ -1,7 +1,7 @@
 var CriterionModel = CellModel.extend({
 
-	// string Name
-	label: '',
+    // string Name
+    label: '',
 
     // integer Order
     order: 0,
@@ -9,7 +9,7 @@ var CriterionModel = CellModel.extend({
     // integer Default order
     defaultOrder: 0,
 
-	defaults: function() {
+    defaults: function() {
         var order = criterions.nextOrder();
 
         this.defaultOrder = order;
@@ -20,11 +20,11 @@ var CriterionModel = CellModel.extend({
         };
     },
 
-	/**
-		Method to set the main data
-	**/
-	setData: function(data) {
-		this.set('label', data);
-	},
+    /**
+    	Method to set the main data
+    **/
+    setData: function(data) {
+        this.set('label', data);
+    },
 
 });

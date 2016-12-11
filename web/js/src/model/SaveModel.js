@@ -6,15 +6,15 @@ var SaveModel = Backbone.Model.extend({
     // string CSV formatted data
     dataCsv: '',
 
-	// string Text for alert message
-	alertMessage: '',
+    // string Text for alert message
+    alertMessage: '',
 
-	defaults: function() {
-      	return {
+    defaults: function() {
+        return {
             data: '',
-        	dataCsv: '',
-        	alertMessage: '',
-      	};
+            dataCsv: '',
+            alertMessage: '',
+        };
     },
 
     /**
@@ -22,11 +22,12 @@ var SaveModel = Backbone.Model.extend({
      *
      * @param {object} data
      */
-    initJson: function (data) {
-        var data = _.extend(
-            {title: tableTitle},
-            {values: cValue}
-        );
+    initJson: function(data) {
+        var data = _.extend({
+            title: tableTitle
+        }, {
+            values: cValue
+        });
 
         this.set('data', JSON.stringify(data));
     },
@@ -36,7 +37,7 @@ var SaveModel = Backbone.Model.extend({
      *
      * @param {object} data
      */
-    initCsv: function (data) {
+    initCsv: function(data) {
         var rows = [];
 
         // Set title
@@ -50,7 +51,9 @@ var SaveModel = Backbone.Model.extend({
         _.each(criterions.models, function(criterion) {
             var row = [criterion.get('label')];
 
-            _.each(cValue.where({criterion: criterion}), function(value) {
+            _.each(cValue.where({
+                criterion: criterion
+            }), function(value) {
                 row.push(value.get('data'));
             });
 
