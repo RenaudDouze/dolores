@@ -1,33 +1,33 @@
 var ImportView = ModalView.extend({
 
-	tagName: 'body',
+    tagName: 'body',
 
-	/**
-		Template selector
-	**/
-	templateSelector: '#import_template',
+    /**
+    	Template selector
+    **/
+    templateSelector: '#import_template',
 
-	/**
-		Events
-	**/
+    /**
+    	Events
+    **/
     events: {
         "click .action-import.btn": "import",
         "click .nav.nav-tabs a": "tabIt",
     },
 
-	/**
-		Import the data
-	**/
-	import: function() {
+    /**
+    	Import the data
+    **/
+    import: function() {
         this.loaderStart();
 
         var activeTab = this.$el.find('.nav.nav-tabs .nav-link.active');
         var activeSelector = activeTab.attr('href');
         var activeType = activeSelector.replace('#import-', '');
 
-		var text = this.$el.find(activeSelector + ' textarea').val();
+        var text = this.$el.find(activeSelector + ' textarea').val();
 
-        switch(activeType) {
+        switch (activeType) {
             case 'json':
                 this.importJson(text);
                 break;
@@ -35,7 +35,7 @@ var ImportView = ModalView.extend({
                 this.importCsv(text);
                 break;
         }
-	},
+    },
 
     importJson: function(text) {
         try {
@@ -91,14 +91,14 @@ var ImportView = ModalView.extend({
     /**
         Start the loader
     **/
-    loaderStart: function () {
+    loaderStart: function() {
         this.$el.find('.action-import.btn').addClass('m-progress');
     },
 
     /**
         Stop the loader
     **/
-    loaderStop: function () {
+    loaderStop: function() {
         this.$el.find('.action-import.btn').removeClass('m-progress');
     },
 
