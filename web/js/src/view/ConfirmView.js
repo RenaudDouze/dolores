@@ -12,6 +12,7 @@ var ConfirmView = ModalView.extend({
     **/
     events: {
         "click .action-doit": "doIt",
+        "click .action-dont-doit": "dontDoIt",
     },
 
     /**
@@ -24,6 +25,14 @@ var ConfirmView = ModalView.extend({
             this.close();
             this.reset();
         }
+    },
+
+    /**
+     * Don't do the action
+     */
+    dontDoIt: function() {
+        this.close();
+        this.reset();
     },
 
     /**

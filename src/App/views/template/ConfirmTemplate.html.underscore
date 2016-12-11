@@ -15,7 +15,7 @@
                         <button type="button" class="btn btn-<%= alertClass %> action-doit">
                             <%= actionLabel %>
                         </button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                        <button type="button" class="btn btn-default action-dont-doit" data-dismiss="modal" autofocus>
                             <%= cancelLabel %>
                         </button>
                     </p>
