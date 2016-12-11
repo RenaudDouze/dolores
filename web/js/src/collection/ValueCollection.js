@@ -15,10 +15,10 @@ var ValueCollection = Backbone.Collection.extend({
     },
 
     /**
-    	Sort the table
-
-		@return void
-    **/
+     * Sort the table
+     *
+     * @return void
+     */
     tableSort: function() {
         var sort = this.sorting.last();
 
@@ -58,9 +58,18 @@ var ValueCollection = Backbone.Collection.extend({
         var filter = {};
         filter[field] = model;
 
-        var values = this.where(filter);
-        values = _.sortBy(this.where(filter), function(element) {
-            return element.getData();
+        var values = _.sortBy(this.where(filter), function(element) {
+            var data = element.getData();
+
+            // On vire les espaces
+            var cleanedData = data.replace(/\s/g, '');
+
+            // Si c'est un nombre
+            if (! isNaN(cleanedData)) {
+                data = Number(cleanedData);
+            }
+
+            return data;
         });
 
         if (cValue.sorting.SORT_DESC == order) {
