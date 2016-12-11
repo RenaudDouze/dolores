@@ -21,8 +21,8 @@ var ImportView = ModalView.extend({
 	import: function() {
         this.loaderStart();
 
-        var activeTab = this.$el.find('.nav.nav-tabs li.active');
-        var activeSelector = activeTab.children('a').attr('href');
+        var activeTab = this.$el.find('.nav.nav-tabs .nav-link.active');
+        var activeSelector = activeTab.attr('href');
         var activeType = activeSelector.replace('#import-', '');
 
 		var text = this.$el.find(activeSelector + ' textarea').val();
