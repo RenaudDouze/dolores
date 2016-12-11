@@ -59,7 +59,7 @@ var ValueCollection = Backbone.Collection.extend({
         filter[field] = model;
 
         var values = _.sortBy(this.where(filter), function(element) {
-            var data = element.getData();
+            var data = ''+element.getData();
 
             // On vire les espaces
             var cleanedData = data.replace(/\s/g, '');
