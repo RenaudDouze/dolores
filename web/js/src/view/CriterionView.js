@@ -1,8 +1,8 @@
 var CriterionView = CellSortableView.extend({
-	/**
-		Tab name
-	**/
-	tagName: 'th',
+    /**
+    	Tab name
+    **/
+    tagName: 'th',
 
     /**
         Class name
@@ -19,30 +19,32 @@ var CriterionView = CellSortableView.extend({
     **/
     fieldName: 'criterion',
 
-	/**
-		Events
-	**/
-    events: function () {
-    	var events = CellView.prototype.events;
+    /**
+    	Events
+    **/
+    events: function() {
+        var events = CellView.prototype.events;
 
-    	return _.extend(events, {
-        	"click .action-remove.btn": "removeCriterion",
+        return _.extend(events, {
+            "click .action-remove.btn": "removeCriterion",
             "click .action-sort.btn": "sortByCriterion",
-  	  	});
+        });
     },
 
-	/**
-		Remove a criterion
-	**/
-	removeCriterion: function(e) {
+    /**
+    	Remove a criterion
+    **/
+    removeCriterion: function(e) {
         tableView.removeCriterion(this.model);
-	},
+    },
 
     /**
         Sort by criterion
     **/
     sortByCriterion: function(e) {
-        var filter = {criterion: this.model};
+        var filter = {
+            criterion: this.model
+        };
         this.sortBy(filter);
     },
 });

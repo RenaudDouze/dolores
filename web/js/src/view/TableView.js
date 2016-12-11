@@ -1,74 +1,136 @@
 var TableView = ParentView.extend({
 
-	tagName: 'div',
-	className: '',
+    tagName: 'div',
+    className: '',
     el: '#tableContent',
 
-	/**
-		Subviews
-	**/
-	exportView: null,
+    /**
+    	Subviews
+    **/
+    exportView: null,
     importView: null,
 
     tHeadView: null,
     tFootView: null,
     tBodyView: null,
 
-	/**
-		Initialize
-	**/
-	initialize: function() {
+    /**
+    	Initialize
+    **/
+    initialize: function() {
         this.initializeData();
 
-		save = new SaveModel();
-		this.importView = new ImportView({
-			model: save,
-			el: '#import',
-		});
-		this.exportView = new ExportView({
-			model: save,
-			el: '#export',
-		});
+        save = new SaveModel();
+        this.importView = new ImportView({
+            model: save,
+            el: '#import',
+        });
+        this.exportView = new ExportView({
+            model: save,
+            el: '#export',
+        });
 
         this.tHeadView = new TableHeadView();
         this.tFootView = new TableFootView();
         this.tBodyView = new TableBodyView();
 
         tableTitle = new TitleModel();
-        this.titleView = new TitleView({model: tableTitle});
+        this.titleView = new TitleView({
+            model: tableTitle
+        });
 
         this.listenTo(cValue, 'reset', this.render);
         this.listenTo(things, 'sort', this.render);
-	    this.listenTo(criterions, 'sort', this.render);
+        this.listenTo(criterions, 'sort', this.render);
 
-	    this.render();
+        this.render();
 
         this.loaderStop();
-	},
+    },
 
     /**
      * Initialize data
      */
-    initializeData: function () {
-        var Truc = new ThingModel({'label': 'Truc', order: 1, defaultOrder: 1});
-        var Machin = new ThingModel({'label': 'Machin', order: 2, defaultOrder: 2});
-        var Chose = new ThingModel({'label': 'Chose', order: 3, defaultOrder: 3});
+    initializeData: function() {
+        var Truc = new ThingModel({
+            'label': 'Truc',
+            order: 1,
+            defaultOrder: 1
+        });
+        var Machin = new ThingModel({
+            'label': 'Machin',
+            order: 2,
+            defaultOrder: 2
+        });
+        var Chose = new ThingModel({
+            'label': 'Chose',
+            order: 3,
+            defaultOrder: 3
+        });
 
-        var Critere1 = new CriterionModel({'label': 'Crit. A', order: 1, defaultOrder: 1});
-        var Critere2 = new CriterionModel({'label': 'Crit. B', order: 2, defaultOrder: 2});
-        var Critere3 = new CriterionModel({'label': 'Crit. C', order: 3, defaultOrder: 3});
+        var Critere1 = new CriterionModel({
+            'label': 'Crit. A',
+            order: 1,
+            defaultOrder: 1
+        });
+        var Critere2 = new CriterionModel({
+            'label': 'Crit. B',
+            order: 2,
+            defaultOrder: 2
+        });
+        var Critere3 = new CriterionModel({
+            'label': 'Crit. C',
+            order: 3,
+            defaultOrder: 3
+        });
 
-        var ValueTruc1 = new ValueModel({'data': 'Truc-1', 'thing': Truc, 'criterion': Critere1});
-        var ValueTruc2 = new ValueModel({'data': 'Truc-2', 'thing': Truc, 'criterion': Critere2});
-        var ValueTruc3 = new ValueModel({'data': 'Truc-3', 'thing': Truc, 'criterion': Critere3});
+        var ValueTruc1 = new ValueModel({
+            'data': 'Truc-1',
+            'thing': Truc,
+            'criterion': Critere1
+        });
+        var ValueTruc2 = new ValueModel({
+            'data': 'Truc-2',
+            'thing': Truc,
+            'criterion': Critere2
+        });
+        var ValueTruc3 = new ValueModel({
+            'data': 'Truc-3',
+            'thing': Truc,
+            'criterion': Critere3
+        });
 
-        var ValueMachin1 = new ValueModel({'data': 'Machin-1', 'thing': Machin, 'criterion': Critere1});
-        var ValueMachin2 = new ValueModel({'data': 'Machin-2', 'thing': Machin, 'criterion': Critere2});
-        var ValueMachin3 = new ValueModel({'data': 'Machin-3', 'thing': Machin, 'criterion': Critere3});
+        var ValueMachin1 = new ValueModel({
+            'data': 'Machin-1',
+            'thing': Machin,
+            'criterion': Critere1
+        });
+        var ValueMachin2 = new ValueModel({
+            'data': 'Machin-2',
+            'thing': Machin,
+            'criterion': Critere2
+        });
+        var ValueMachin3 = new ValueModel({
+            'data': 'Machin-3',
+            'thing': Machin,
+            'criterion': Critere3
+        });
 
-        var ValueChose1 = new ValueModel({'data': 'Chose-1', 'thing': Chose, 'criterion': Critere1});
-        var ValueChose2 = new ValueModel({'data': 'Chose-2', 'thing': Chose, 'criterion': Critere2});
-        var ValueChose3 = new ValueModel({'data': 'Chose-3', 'thing': Chose, 'criterion': Critere3});
+        var ValueChose1 = new ValueModel({
+            'data': 'Chose-1',
+            'thing': Chose,
+            'criterion': Critere1
+        });
+        var ValueChose2 = new ValueModel({
+            'data': 'Chose-2',
+            'thing': Chose,
+            'criterion': Critere2
+        });
+        var ValueChose3 = new ValueModel({
+            'data': 'Chose-3',
+            'thing': Chose,
+            'criterion': Critere3
+        });
 
         things = new ThingCollection;
         things.add([Truc, Machin, Chose]);
@@ -99,9 +161,9 @@ var TableView = ParentView.extend({
         this.loaderStop();
     },
 
-	/**
-		Events
-	**/
+    /**
+    	Events
+    **/
     events: {
         "click .action-add-thing": "createThing",
         "click .action-add-criterion": "createCriterion",
@@ -115,7 +177,7 @@ var TableView = ParentView.extend({
         "click .reload": "reload",
     },
 
-    reload: function () {
+    reload: function() {
         things.sort();
     },
 
@@ -127,10 +189,10 @@ var TableView = ParentView.extend({
         things.add([newThing]);
     },
 
-	/**
-		Add a thing
-	**/
-	addThing: function(newThing) {
+    /**
+    	Add a thing
+    **/
+    addThing: function(newThing) {
         this.tHeadView.addThing(newThing);
 
         for (var i = 0; i < criterions.length; i++) {
@@ -141,10 +203,10 @@ var TableView = ParentView.extend({
         }
     },
 
-	/**
-		Remove a thing
-	**/
-	removeThing: function(thing) {
+    /**
+    	Remove a thing
+    **/
+    removeThing: function(thing) {
         confirm.set('title', "T'es sûr de vouloir enlever ce truc ?");
         confirm.set('text', "Si t'enlève ce truc \"" + thing.get('label') + "\", tu perds toutes les données de la colonne");
         confirm.set('actionLabel', "Enlève j'te dis !");
@@ -155,12 +217,14 @@ var TableView = ParentView.extend({
             // Remove the thing
             things.remove(thing);
 
-            cValue.remove(cValue.where({thing: thing}));
+            cValue.remove(cValue.where({
+                thing: thing
+            }));
         }, this);
         confirm.set('actionCallback', callback);
 
         confirmView.open();
-	},
+    },
 
     /**
         Create a new critetion
@@ -170,11 +234,11 @@ var TableView = ParentView.extend({
         criterions.add([newCriterion]);
     },
 
-	/**
-		Add a criterion
-	**/
-	addCriterion: function(newCriterion) {
-    	this.tBodyView.addCriterion(newCriterion);
+    /**
+    	Add a criterion
+    **/
+    addCriterion: function(newCriterion) {
+        this.tBodyView.addCriterion(newCriterion);
 
         for (var i = 0; i < things.length; i++) {
             var thing = things.at(i);
@@ -185,12 +249,12 @@ var TableView = ParentView.extend({
                 criterion: criterion,
             });
         }
-	},
+    },
 
-	/**
-		Remove a criterion
-	**/
-	removeCriterion: function(criterion) {
+    /**
+    	Remove a criterion
+    **/
+    removeCriterion: function(criterion) {
         confirm.set('title', "T'es sûr de vouloir enlever ce critère ?");
         confirm.set('text', "Si t'enlève ce critère \"" + criterion.get('label') + "\", tu perds toutes les données de la ligne");
         confirm.set('actionLabel', "Enlève j'te dis !");
@@ -201,24 +265,26 @@ var TableView = ParentView.extend({
             // Remove the thing
             criterions.remove(criterion);
 
-            cValue.remove(cValue.where({criterion: criterion}));
+            cValue.remove(cValue.where({
+                criterion: criterion
+            }));
         }, this);
         confirm.set('actionCallback', callback);
 
         confirmView.open();
-	},
+    },
 
-	/**
-		Create a new value from attributes
-	**/
-	createValue: function(attributes) {
-        if (! cValue.where(attributes).length) {
+    /**
+    	Create a new value from attributes
+    **/
+    createValue: function(attributes) {
+        if (!cValue.where(attributes).length) {
             var value = new ValueModel(attributes);
             cValue.add([value]);
 
             this.addValue(value);
         }
-	},
+    },
 
     /**
         Add a value
@@ -227,34 +293,34 @@ var TableView = ParentView.extend({
         this.tBodyView.addValue(newValue);
     },
 
-	/**
-		Open the export page
-	**/
-	openExportPage: function() {
+    /**
+    	Open the export page
+    **/
+    openExportPage: function() {
         save.initJson();
-		save.initCsv();
+        save.initCsv();
 
-		this.exportView.open();
-	},
+        this.exportView.open();
+    },
 
-	/**
-		Open the import page
-	**/
-	openImportPage: function() {
-		this.importView.open();
-	},
+    /**
+    	Open the import page
+    **/
+    openImportPage: function() {
+        this.importView.open();
+    },
 
     /**
         Start the loader
     **/
-    loaderStart: function () {
+    loaderStart: function() {
         this.$el.find('.loader').show();
     },
 
     /**
         Stop the loader
     **/
-    loaderStop: function () {
+    loaderStop: function() {
         this.$el.find('.loader').hide();
     }
 });

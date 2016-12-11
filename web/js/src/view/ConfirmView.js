@@ -1,11 +1,11 @@
 var ConfirmView = ModalView.extend({
 
-	tagName: 'body',
+    tagName: 'body',
 
-	/**
-		Template selector
-	**/
-	templateSelector: '#confirm_template',
+    /**
+    	Template selector
+    **/
+    templateSelector: '#confirm_template',
 
     /**
         Events
@@ -24,7 +24,6 @@ var ConfirmView = ModalView.extend({
             this.reset();
             this.close();
         }
-
     },
 
     /**
