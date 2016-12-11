@@ -180,21 +180,29 @@ var ValueCollection = Backbone.Collection.extend({
                 errors.push('Il faut au moins deux lignes (titre;colonnes et ligne;valeurs)');
             }
 
+            var self = this;
+
             var rows = [];
             _.each(rowsStr, function(rowStr, index) {
-                if (0 !== rowStr.trim().length) {
-                    var row = rowStr.split(';');
+                var row = rowStr.split(';');
 
-                    if (index && row.length !== _.first(rows).length) {
-                        errors.push("Il faut le même nombre d'éléments dans chaque ligne");
-                    }
-
-                    rows.push(row);
+                if (index && row.length !== _.first(rows).length) {
+                    errors.push("Il faut le même nombre d'éléments dans chaque ligne");
                 }
+
+                _.each(row, function(value, index) {
+                    row[index] = self.properCsvValue(value);
+                });
+
+                rows.push(row);
+            });
+
+            _.each(rows[0], function(value, index) {
+                rows[0][index] = self.properCsvValue(value);
             });
 
             // Don't need title here
-            rows[0].shift()
+            rows[0].shift();
 
             things.reset(null, {
                 silent: true
@@ -257,5 +265,16 @@ var ValueCollection = Backbone.Collection.extend({
         } else {
             throw new DoloresCsvNotCompatibleException(errors);
         }
+    },
+
+    /**
+     * Retourne une valeur nettoyée issue d'un csv
+     * Enleve les quotes d'encapsulation
+     *
+     * @param  string value
+     * @return string
+     */
+    properCsvValue: function(value) {
+        return value.replace(/^"(.*)"$/, '$1');
     }
 });
