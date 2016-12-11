@@ -37,3 +37,8 @@ td:hover .action-remove {
 .mode-print [contenteditable="true"] {
     border: none;
 }
+
+#export .nav-tabs,
+#import .nav-tabs {
+  border-bottom: none 0;
+}

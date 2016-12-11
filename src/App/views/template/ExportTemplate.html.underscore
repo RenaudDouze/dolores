@@ -12,11 +12,11 @@
 				<div class="alerts"></div>
 
 				<ul class="nav nav-tabs">
-				  	<li role="presentation" class="active">
-				  		<a href="#export-json" role="tab" data-toggle="tab">JSON</a>
+				  	<li class="nav-item">
+				  		<a href="#export-json" class="nav-link active" role="tab" data-toggle="tab">JSON</a>
 				  	</li>
-				  	<li role="presentation">
-				  		<a href="#export-csv" role="tab" data-toggle="tab">CSV</a>
+				  	<li class="nav-item">
+				  		<a href="#export-csv" class="nav-link" role="tab" data-toggle="tab">CSV</a>
 				  	</li>
 				</ul>
 				<div class="tab-content">
